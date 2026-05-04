@@ -9,19 +9,19 @@ import path from 'path'
 
 export default defineConfig(({ command }) => ({
   server: {
-    host: 'odt.local',
+    host: 'multiserwis.local',
     port: 5981,
     strictPort: true,
     cors: true,
     hmr: {
       protocol: 'ws',
-      host: 'odt.local',
+      host: 'multiserwis.local',
       port: 5981,
     },
   },
 
   base: command === 'build'
-    ? '/wp-content/themes/odt/public/build/'
+    ? '/wp-content/themes/multiserwis/public/build/'
     : '/build/',
 
   plugins: [
