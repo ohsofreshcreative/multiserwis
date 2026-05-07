@@ -10,36 +10,40 @@
   /* base */
   --body: 42 63 80; /* #2A3F50 */
 
-  /* primary scale (zielony ze screena) */
-  --primary: 29 63 52; /* #1D3F34 */
-  --p-hover: 24 53 43; /* #18352B */
-  --p-50: 210 217 214; /* #D2D9D6 */
-  --p-100: 211 245 234; /* #D3F5EA */
-  --p-200: 5 232 221; /* #C6E8DD */
-  --p-300: 179 224 209; /* #B3E0D1 */
-  --p-400: 133 200 178; /* #85C8B2 */
-  --p-500: 68 147 122; /* #44937A */
-  --p-600: 24 53 43; /* #18352B */
-  --p-700: 19 42 35; /* #132A23 */
-  --p-800: 15 32 26; /* #0F201A */
-  --p-900: 10 21 17; /* #0A1511 */
-  --p-dark: 6 13 10; /* #060D0A */
-  --action: rgb(17, 125, 90); /* #117D5A */
+/* PRIMARY (lewa kolumna – granat) */
+--primary: 5 7 54; /* #050736 */
+--p-hover: 4 6 45; /* #04062D */
+
+--p-50: 189 191 237; /* #BDBFED */
+--p-100: 152 155 205; /* #989BCD */
+--p-200: 112 115 178; /* #7073B2 */
+--p-300: 65 68 130;   /* #414482 */
+--p-400: 39 41 101;   /* #272965 */
+--p-500: 5 7 54;      /* #050736 */
+--p-600: 4 6 45;      /* #04062D */
+--p-700: 3 5 36;      /* #030524 */
+--p-800: 3 4 27;      /* #03041B */
+--p-900: 2 2 18;      /* #020212 */
+--p-dark: 1 1 11;     /* #01010B */
+
+--action: rgb(5, 7, 54);
 
 
-  /* secondary scale (pomarańcz/brąz ze screena) */
-  --secondary: 222 133 93; /* #DE855D */
-  --s-hover: 185 111 78; /* #B96F4E */
-  --s-100: 248 231 223; /* #F8E7DF */
-  --s-200: 244 214 201; /* #F4D6C9 */
-  --s-300: 239 194 174; /* #EFC2AE */
-  --s-400: 233 174 147; /* #E9AE93 */
-  --s-500: 228 153 120; /* #E49978 */
-  --s-600: 185 111 78; /* #B96F4E */
-  --s-700: 148 89 62; /* #94593E */
-  --s-800: 111 67 47; /* #6F432F */
-  --s-900: 74 44 31; /* #4A2C1F */
-  --s-dark: 44 27 19; /* #2C1B13 */
+/* SECONDARY (prawa kolumna – brąz) */
+--secondary: 192 120 87; /* #C07857 */
+--s-hover: 160 100 73;   /* #A06449 */
+
+--s-50: 242 228 221; /* #F2E4DD */
+--s-100: 234 210 199; /* #EAD2C7 */
+--s-200: 224 188 171; /* #E0BCAB */
+--s-300: 213 165 143; /* #D5A58F */
+--s-400: 203 143 115; /* #CB8F73 */
+--s-500: 192 120 87;  /* #C07857 */
+--s-600: 160 100 73;  /* #A06449 */
+--s-700: 128 80 58;   /* #80503A */
+--s-800: 96 60 44;    /* #603C2C */
+--s-900: 64 40 29;    /* #40281D */
+--s-dark: 38 24 17;   /* #261811 */
 
   /* neutrals / fixed backgrounds */
   --gray: #2a3f50;
@@ -113,6 +117,8 @@
 
 /*-- USED ---*/
 @import '../css/blocks/hero.scss';
+
+/*-- NOT USED --*/
 @import '../css/blocks/help.scss';
 @import '../css/blocks/cta-bg.scss';
 @import '../css/blocks/tiles.scss';
@@ -152,7 +158,6 @@
 @import '../css/blocks/voucher.scss';
 @import '../css/blocks/accordion.scss';
 
-/*-- NOT USED --*/
 @import '../css/blocks/complex.scss';
 @import '../css/blocks/works.scss';
 @import '../css/blocks/category-posts.scss';
@@ -196,7 +201,3 @@
 @import '../css/blocks/inspirations.scss';
 @import '../css/blocks/wysiwyg.scss';
 @import '../css/blocks/coop.scss';
-
-@import './megamenu.scss';
-@import './amelia.scss';
-@import './woocommerce.scss';

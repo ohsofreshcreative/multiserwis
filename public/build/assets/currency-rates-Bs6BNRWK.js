@@ -1,0 +1,1 @@
+document.querySelectorAll(`[data-currency-rates]`).forEach(e=>{let t=e.querySelector(`[data-currency-select]`);t&&t.addEventListener(`change`,t=>{let n=t.target.value;e.querySelectorAll(`[data-currency-panel]`).forEach(e=>{e.classList.toggle(`hidden`,e.dataset.currencyPanel!==n)})})});

@@ -4,7 +4,7 @@ use App\Walkers\MobileDropdownWalker;
 use App\Walkers\MegaMenuWalker;
 @endphp
 
-<header x-data="{ mobileOpen: false }" class="relative top-0 z-50 bg-white masthead fixed-top mt-4 rounded-full">
+<header x-data="{ mobileOpen: false }" class="relative top-0 z-50 bg-white masthead fixed-top">
 
 	<!-- Desktop Header -->
 	<div class="items-center justify-between hidden h-full py-4 md:px-4 lg:px-12 mx-auto lg:flex">
@@ -24,7 +24,7 @@ use App\Walkers\MegaMenuWalker;
 			'echo' => false,
 			'walker' => new \App\Walkers\MegaMenuWalker(),
 			]) !!}
-			<a href="/panel-pacjenta"><img src="https://osrodekdobrejterapii.pl/wp-content/uploads/2026/04/user.svg" /></a>
+			<!-- <a href="/panel-pacjenta"><img src="https://osrodekdobrejterapii.pl/wp-content/uploads/2026/04/user.svg" /></a> -->
 		</nav>
 		@endif
 
@@ -93,7 +93,7 @@ use App\Walkers\MegaMenuWalker;
 				]) !!}
 			</nav>
 			@endif
-			<img src="https://osrodekdobrejterapii.pl/wp-content/uploads/2026/04/user.svg" />
+			<!-- <img src="https://osrodekdobrejterapii.pl/wp-content/uploads/2026/04/user.svg" /> -->
 			<!-- <div class="mt-8">
                 <a href="/kontakt" class="block w-full white-btn">
                 Skontaktuj się z nami

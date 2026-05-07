@@ -10,6 +10,7 @@ import.meta.glob(['../images/**', '../fonts/**']);
 import './menubar.js';
 import './footer-accordion.js';
 import './megamenu.js';
+import './blocks/hero.js'; 
 
 /*--- USED ---*/
 
@@ -22,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (document.querySelector('.b-tabs')) import('./blocks/tabs');
   if (document.querySelector('.b-slides')) import('./blocks/slides');
   if (document.querySelector('.b-slider')) import('./blocks/slider');
+  if (document.querySelector('.b-currency-rates')) import('./blocks/currency-rates');
 });
 
 /*--- NOT USED ---*/
@@ -287,3 +289,6 @@ acf.addAction('ready_field/name=amelia_service', function($field) {
     $block.data('amelia-initialized', true);
     initializeAmeliaBlock($block);
 });
+
+
+

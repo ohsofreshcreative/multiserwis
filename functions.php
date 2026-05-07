@@ -49,6 +49,9 @@ Application::configure()
 |
 */
 
+
+require_once __DIR__ . '/app/currency-dictionary.php';
+
 /*--- HIDE ALL BLOCKS ---*/
 
 function allow_only_selected_blocks( $allowed_block_types, $editor_context ) {

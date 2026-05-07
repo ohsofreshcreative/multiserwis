@@ -44,11 +44,10 @@ class Hero extends Block
 				'preview_size' => 'medium',
 			])
 			->addText('title', ['label' => 'Tytuł'])
-			->addWysiwyg('txt', [
-				'label' => 'Treść',
-				'tabs' => 'all', // 'visual', 'text', 'all'
-				'toolbar' => 'full', // 'basic', 'full'
-				'media_upload' => true,
+			->addTextarea('txt', [
+				'label' => 'Opis',
+				'rows' => 2,
+				'new_lines' => 'br',
 			])
 			->addLink('button1', [
 				'label' => 'Przycisk #1',
@@ -82,10 +81,11 @@ class Hero extends Block
 	public function with()
 	{
 		return [
-			'g_hero' => get_field('g_hero'),
-			'section_id' => get_field('section_id'),
+			'g_hero'        => get_field('g_hero'),
+			'section_id'    => get_field('section_id'),
 			'section_class' => get_field('section_class'),
-			'nomt' => get_field('nomt'),
+			'nomt'          => get_field('nomt'),
+			'locations'     => get_option('ms_currency_rates', []),
 		];
 	}
 }

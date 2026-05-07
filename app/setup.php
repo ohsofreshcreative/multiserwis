@@ -8,6 +8,7 @@ namespace App;
 
 use Illuminate\Support\Facades\Vite;
 
+
 /**
  * Inject styles into the block editor.
  *
@@ -759,3 +760,87 @@ add_filter('paginate_links_output', function ($output) {
     $output = str_replace('next', 'next', $output);
     return $output;
 });
+
+
+/*--- CURRENCY RATES ---*/
+function ms_parse_currency_rates(string $content): array
+{
+    $content = trim($content);
+    if ($content === '') return [];
+
+    if (str_starts_with(ltrim($content), '<')) {
+        $rows = [];
+        libxml_use_internal_errors(true);
+        $xml = simplexml_load_string($content);
+        libxml_clear_errors();
+        if ($xml === false) return [];
+
+        foreach ($xml->children() as $node) {
+            $code = strtoupper(trim((string) ($node->code ?? $node->kod ?? $node->symbol ?? '')));
+            if ($code === '') continue;
+            $rows[] = [
+                'id'   => (int) ($node->id ?? 0),
+                'code' => $code,
+                'buy'  => (float) ($node->buy  ?? $node->kup ?? 0),
+                'sell' => (float) ($node->sell ?? $node->sprzedaj ?? 0),
+            ];
+        }
+        return $rows;
+    }
+
+    $rows = [];
+    foreach (preg_split('/\r\n|\r|\n/', $content) as $line) {
+        $line = trim($line);
+        if ($line === '') continue;
+        $cols = str_getcsv($line, ';');
+        if (count($cols) < 4) continue;
+        $code = strtoupper(trim($cols[1]));
+        if ($code === '') continue;
+        $rows[] = [
+            'id'   => (int) $cols[0],
+            'code' => $code,
+            'buy'  => (float) $cols[2],
+            'sell' => (float) $cols[3],
+        ];
+    }
+    return $rows;
+}
+
+/**
+ * Po zapisie opcji – parsuje pliki ze wszystkich placówek i zapisuje wynik.
+ */
+add_action('acf/save_post', function ($post_id) {
+    if ($post_id !== 'options') return;
+
+    $locations = get_field('locations', 'option');
+    if (!is_array($locations)) {
+        update_option('ms_currency_rates', [], false);
+        return;
+    }
+
+    $data = [];
+    foreach ($locations as $loc) {
+        if (empty($loc['rates_file']['ID'])) continue;
+
+        $name = trim($loc['name'] ?? '');
+        $slug = !empty($loc['slug']) ? sanitize_title($loc['slug']) : sanitize_title($name);
+        if ($slug === '') continue;
+
+        $path = get_attached_file($loc['rates_file']['ID']);
+        if (!$path || !is_readable($path)) continue;
+
+        $content = file_get_contents($path);
+        if ($content === false) continue;
+
+        $data[] = [
+            'slug'  => $slug,
+            'name'  => $name,
+            'rates' => ms_parse_currency_rates($content),
+        ];
+    }
+
+    update_option('ms_currency_rates', $data, false);
+    update_option('ms_currency_rates_updated', current_time('mysql'), false);
+}, 20);
+
+add_filter('run_wptexturize', '__return_false');
