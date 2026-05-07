@@ -60,18 +60,3 @@
     animation: spin 7s linear infinite;
   }
 }
-
-@media (min-width: 1024px) {
-  .__img.order1 {
-    position: relative;
-  }
-
-  .__img.order1 > .__photo {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 50vw;
-    right: calc(50% - 50vw);
-    max-width: none;
-  }
-}

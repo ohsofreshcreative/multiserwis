@@ -14,7 +14,6 @@ $sectionClass .= ' ' . $background;
 
 <section data-gsap-anim="section" @if(!empty($section_id)) id="{{ $section_id }}" @endif class="b-cards -smt {{ $sectionClass }} {{ $section_class }}">
 	<div class="__wrapper c-main">
-
 		<div class="__top">
 			<h3 data-gsap-element="header" class="text-p-lighter text-center m-header">{{ strip_tags($g_cards['header']) }}</h3>
 			<p data-gsap-element="txt">{{ $g_cards['text'] }}</p>
@@ -37,10 +36,10 @@ $sectionClass .= ' ' . $background;
 				<img class="mb-6" src="{{ $item['image']['url'] }}" alt="{{ $item['image']['alt'] ?? '' }}" />
 				@endif
 				@if (!empty($item['title']))
-				<h6 class="!text-body mb-4">{{ $item['title'] }}</h6>
+				<h6 class="mb-4">{{ $item['title'] }}</h6>
 				@endif
 				@if (!empty($item['text']))
-				<p class="!text-body">{{ $item['text'] }}</p>
+				<p class="">{{ $item['text'] }}</p>
 				@endif
 			</div>
 			@endforeach

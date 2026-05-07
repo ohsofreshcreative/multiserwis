@@ -117,13 +117,15 @@
 
 /*-- USED ---*/
 @import '../css/blocks/hero.scss';
+/*--- currences ---*/
+@import '../css/blocks/tabs.scss';
+@import '../css/blocks/about.scss';
 
 /*-- NOT USED --*/
 @import '../css/blocks/help.scss';
 @import '../css/blocks/cta-bg.scss';
 @import '../css/blocks/tiles.scss';
 @import '../css/blocks/content.scss';
-@import '../css/blocks/about.scss';
 @import '../css/blocks/team.scss';
 @import '../css/blocks/offer.scss';
 @import '../css/blocks/reviews.scss';
@@ -134,7 +136,6 @@
 @import '../css/blocks/places.scss';
 @import '../css/blocks/member.scss';
 @import '../css/blocks/hero-offer.scss';
-@import '../css/blocks/tabs.scss';
 @import '../css/blocks/proces.scss';
 @import '../css/blocks/faq.scss';
 @import '../css/blocks/hero-help.scss';

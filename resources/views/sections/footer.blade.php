@@ -1,4 +1,4 @@
-<footer class="footer bg-white overflow-hidden relative z-10">
+<footer class="footer bg-primary overflow-hidden relative z-10">
 	<div class="__wrapper c-main relative z-10">
 		<div class="__top flex flex-col md:flex-row justify-between gap-6 mt-20">
 			<img src="{{ $logo['url'] }}" alt="{{ $logo['alt'] ?? 'Logo' }}" class="relative w-auto max-w-46">
@@ -17,9 +17,9 @@
 	</div>
 
 	<div class="c-main flex flex-col md:flex-row justify-between gap-6 py-10 footer-bottom border-t border-primary-lighter">
-		<p class="">Copyright ©2025 <?php echo get_bloginfo('name'); ?>. All Rights Reserved</p>
-		<p class="flex gap-2">Designed &amp; Developed by
-			<a target="_blank" rel="nofollow" href="https://www.ohsofresh.pl" title="OhSoFresh"><img class="oh" src="/wp-content/themes/odt/resources/images/ohsofresh.svg"></a>
+		<p class="text-white">Copyright &copy;{{ date('Y') }} <?php echo get_bloginfo('name'); ?>. All Rights Reserved</p>
+		<p class="flex text-white gap-2">Designed &amp; Developed by
+			<a target="_blank" rel="nofollow" href="https://www.ohsofresh.pl" title="OhSoFresh"><img class="oh" src="/wp-content/themes/multiserwis/resources/images/ohsofresh.svg"></a>
 		</p>
 	</div>
 

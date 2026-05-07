@@ -8,12 +8,12 @@ use App\Support\SectionClasses;
 
 class Places extends Block
 {
-	public $name = 'Gabinety';
+	public $name = 'Lokalizacje';
 	public $description = 'places';
 	public $slug = 'places';
 	public $category = 'formatting';
 	public $icon = 'location';
-	public $keywords = ['gabinety', 'places'];
+	public $keywords = ['lokalizacje', 'places'];
 	public $mode = 'edit';
 	public $supports = [
 		'align' => false,
@@ -34,45 +34,19 @@ class Places extends Block
 				'required' => 0,
 			])
 			->addAccordion('accordion1', [
-				'label' => 'Gabinety',
+				'label' => 'Lokalizacje',
 				'open' => false,
 				'multi_expand' => true,
 			])
 
-			/*--- GROUP #1 ---*/
-			->addTab('Elementy #1', ['placement' => 'top'])
-			->addGroup('g_places1', ['label' => ''])
-			->addRadio('media_type', [
-				'label' => 'Wybierz medium',
-				'choices' => [
-					'gallery' => 'Galeria',
-					'map' => 'Mapa (iframe)',
-				],
-				'default_value' => 'gallery',
-				'layout' => 'horizontal',
-			])
-			// GALLERY
-			->addGallery('gallery', [
-				'label' => 'Galeria obrazów',
-				'preview_size' => 'thumbnail',
-				'library' => 'all',
-				'min' => 1,
-				'max' => 10,
-			])
-				->conditional('media_type', '==', 'gallery')
-			// MAP (IFRAME)
-			->addTextarea('map_iframe', [
-				'label' => 'Kod iframe mapy',
-				'instructions' => 'Wklej tutaj kod iframe, np. z Google Maps.',
-				'new_lines' => '',
-			])
-				->conditional('media_type', '==', 'map')
-			->addText('title', ['label' => 'Tytuł'])
-			->addWysiwyg('txt', [
-				'label' => 'Treść',
-				'tabs' => 'all',
-				'toolbar' => 'full',
-				'media_upload' => true,
+			/*--- TAB #1 ---*/
+			->addTab('Treści', ['placement' => 'top'])
+			->addGroup('g_places', ['label' => ''])
+			->addText('header', ['label' => 'Nagłówek'])
+			->addTextarea('text', [
+				'label' => 'Opis',
+				'rows' => 4,
+				'new_lines' => 'br',
 			])
 			->addLink('button', [
 				'label' => 'Przycisk',
@@ -80,55 +54,39 @@ class Places extends Block
 			])
 			->endGroup()
 
-			/*--- GROUP #2 ---*/
-			->addTab('Elementy #2', ['placement' => 'top'])
-			->addGroup('g_places2', ['label' => ''])
-			->addRadio('media_type', [
-				'label' => 'Wybierz medium',
-				'choices' => [
-					'gallery' => 'Galeria',
-					'map' => 'Mapa (iframe)',
-				],
-				'default_value' => 'gallery',
-				'layout' => 'horizontal',
-			])
-			// GALLERY
-			->addGallery('gallery', [
-				'label' => 'Galeria obrazów',
-				'preview_size' => 'thumbnail',
-				'library' => 'all',
+			/*--- TAB #2 ---*/
+			->addTab('Kafelki', ['placement' => 'top'])
+			->addRepeater('r_places', [
+				'label' => 'Kafelki',
+				'layout' => 'table', // 'row', 'block', albo 'table'
 				'min' => 1,
-				'max' => 10,
+				'button_label' => 'Dodaj kafelek'
 			])
-				->conditional('media_type', '==', 'gallery')
-			// MAP (IFRAME)
-			->addTextarea('map_iframe', [
-				'label' => 'Kod iframe mapy',
-				'instructions' => 'Wklej tutaj kod iframe, np. z Google Maps.',
-				'new_lines' => '',
+			->addImage('image', [
+				'label' => 'Obraz',
+				'return_format' => 'array', // lub 'url', lub 'id'
+				'preview_size' => 'thumbnail',
 			])
-				->conditional('media_type', '==', 'map')
-			->addText('title', ['label' => 'Tytuł'])
-			->addWysiwyg('txt', [
-				'label' => 'Treść',
-				'tabs' => 'all',
-				'toolbar' => 'full',
-				'media_upload' => true,
+			->addText('title', [
+				'label' => 'Nazwa punktu',
 			])
-			->addLink('button', [
-				'label' => 'Przycisk',
-				'return_format' => 'array',
+			->addTextarea('txt', [
+				'label' => 'Adres',
+				'rows' => 2,
+				'new_lines' => 'br',
 			])
-			->endGroup()
+			->addText('number', [
+				'label' => 'Numer telefonu',
+			])
+			->addTextarea('navi', [
+				'label' => 'Nawigacja',
+			])
+			->endRepeater()
 
 			/*--- USTAWIENIA BLOKU ---*/
 
 			->addTab('Ustawienia bloku', ['placement' => 'top'])
-			->addImage('imagebg', [
-				'label' => 'Obraz w tle',
-				'return_format' => 'array',
-				'preview_size' => 'thumbnail',
-			])
+
 			->addText('section_id', [
 				'label' => 'ID',
 			])
@@ -184,31 +142,18 @@ class Places extends Block
 		return $places;
 	}
 
-	public function with(): array
+	public function with()
 	{
-		$fields = [
-			'g_places1' => get_field('g_places1'),
-			'g_places2' => get_field('g_places2'),
-			'imagebg' => get_field('imagebg'),
-
+		return [
+			'g_places' => get_field('g_places'),
+			'r_places' => get_field('r_places'),
 			'section_id' => get_field('section_id'),
 			'section_class' => get_field('section_class'),
-
-			'flip' => (bool) get_field('flip'),
-			'wide' => (bool) get_field('wide'),
-			'nomt' => (bool) get_field('nomt'),
-			'gap' => (bool) get_field('gap'),
-
-			'background' => get_field('background') ?: 'none',
+			'flip' => get_field('flip'),
+			'wide' => get_field('wide'),
+			'nomt' => get_field('nomt'),
+			'gap' => get_field('gap'),
+			'background' => get_field('background'),
 		];
-
-		$fields['sectionClass'] = SectionClasses::fromMap($fields, [
-			'flip' => 'order-flip',
-			'wide' => 'wide',
-			'nomt' => '!mt-0',
-			'gap' => 'wider-gap',
-		]);
-
-		return $fields;
 	}
 }

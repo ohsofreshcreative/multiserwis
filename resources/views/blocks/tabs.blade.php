@@ -1,93 +1,78 @@
-<!--- tabs --->
+@php
+$sectionClass = '';
+$sectionClass .= $flip ? ' order-flip' : '';
+$sectionClass .= $wide ? ' wide' : '';
+$sectionClass .= $nomt ? ' !mt-0' : '';
+$sectionClass .= $gap ? ' wider-gap' : '';
+$sectionClass .= $lightbg ? ' section-light' : '';
+$sectionClass .= $graybg ? ' section-gray' : '';
+$sectionClass .= $whitebg ? ' section-white' : '';
+$sectionClass .= $brandbg ? ' section-brand' : '';
+@endphp
+<section data-gsap-anim="section" @if($id) id="{{ $id }}" @endif class="b-tabs -smt {{ $sectionClass }} {{ $class }}">
+	<div class="c-wide bg-white radius section-py">
+		<div class="c-main">
+			<div class="w-full md:w-1/2 m-auto text-center">
+				<h2 data-gsap-element="header">{{ $g_tabs['title'] ?? '' }}</h2>
+				@if(!empty($g_tabs['txt']))
+				<p data-gsap-element="txt" class="mt-2 text-xl">{!! $g_tabs['txt'] !!}</p>
+				@endif
+			</div>
 
-<section
-	data-gsap-anim="section"
-	@if(!empty($section_id)) id="{{ $section_id }}" @endif
-	@class([ 'b-tabs relative -smt' ,
-	$sectionClass=> !empty($sectionClass),
-	$section_class => !empty($section_class),
-	])>
-	<div class="__wrapper c-main relative">
-		@if (!empty($g_tabs['header']))
-		<div class="mb-10 text-center">
-			<h2 data-gsap-element="header">{{ $g_tabs['header'] }}</h2>
-			@if(!empty($g_tabs['text']))
-			<div class="__txt mt-4 max-w-3xl mx-auto">
-				{!! $g_tabs['text'] !!}
+			@if (!empty($r_tabs) && is_array($r_tabs))
+			@php $activeIndex = 0; @endphp
+
+			<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start pt-14">
+
+				{{-- LEWY PANEL: TABS --}}
+				<div class="lg:col-span-3 h-full">
+					<div data-gsap-element="tabs"
+						class="flex flex-row lg:flex-col h-full js-tabs-nav gap-4 lg:gap-0 overflow-x-scroll lg:overflow-x-visible px-5 lg:px-0"
+						role="tablist" aria-orientation="vertical">
+						@foreach ($r_tabs as $i => $tab)
+						<button
+							type="button"
+							class="tab_btn w-full text-left px-10 py-6 rounded-xl transition {{ $i === $activeIndex ? 'active' : '' }}"
+							data-tab-index="{{ $i }}"
+							@if(!empty($tab['map_lat']) && !empty($tab['map_lng']))
+							data-map-lat="{{ $tab['map_lat'] }}"
+							data-map-lng="{{ $tab['map_lng'] }}"
+							@endif
+							role="tab"
+							aria-selected="{{ $i === $activeIndex ? 'true' : 'false' }}">
+							<div class="flex flex-col gap-1 w-full">
+								<span class="text-lg !font-bold">{{ $tab['tab'] ?? 'Zakładka ' . ($i+1) }}</span>
+								@if(!empty($tab['tab_desc']))
+								<span class="text-base">{!! $tab['tab_desc'] !!}</span>
+								@endif
+								@if(!empty($tab['tab_extra']))
+								<div class="flex items-center gap-2">
+									<img src="/wp-content/uploads/2026/05/phone.svg" alt="Ikona telefonu" class="">
+									<span class="">{{ $tab['tab_extra'] }}</span>
+								</div>
+								@endif
+							</div>
+						</button>
+						@endforeach
+					</div>
+				</div>
+
+				{{-- PRAWY PANEL: WSPÓLNA MAPA --}}
+				<div data-gsap-element="content" class="lg:col-span-9">
+					@if (!empty($locations) && is_array($locations))
+					<div
+						class="js-osm-shared radius overflow-hidden"
+						style="height: 600px;"
+						data-zoom="{{ $map_zoom ?: 12 }}"
+						data-locations='@json($locations)'></div>
+					@endif
+				</div>
+
 			</div>
 			@endif
 		</div>
-		@endif
-
-		@if(!empty($grouped_tabs))
-		<div x-data="{ activeTab: 0 }" class="__tabs mt-12">
-
-			<div class="swiper tabs-swiper !overflow-visible">
-				<div class="swiper-wrapper md:justify-center">
-					@foreach ($grouped_tabs as $name => $items)
-					<div class="swiper-slide !w-auto">
-						<div
-							role="button"
-							tabindex="0"
-							data-tab-index="{{ $loop->index }}"
-							@click="activeTab = {{ $loop->index }}"
-							@keydown.enter="activeTab = {{ $loop->index }}"
-							@keydown.space.prevent="activeTab = {{ $loop->index }}"
-							:class="{ 'bg-primary-lighter text-primary border-r border-primary-light': activeTab === {{ $loop->index }}, 'bg-white text-body hover:bg-primary-lighter border-r border-primary-light': activeTab !== {{ $loop->index }} }"
-							class="relative !font-medium whitespace-nowrap p-6 transition-colors duration-200 focus:outline-none select-none cursor-pointer">
-							{{ $name }}
-
-							<div x-show="activeTab === {{ $loop->index }}" x-cloak
-								class="absolute -bottom-2 left-1/2 w-4 h-4 bg-primary transform -translate-x-1/2 rotate-45 z-60 pointer-events-none">
-							</div>
-						</div>
-					</div>
-					@endforeach
-				</div>
-			</div>
-
-			<div class="__tab">
-				@foreach ($grouped_tabs as $name => $items)
-				<div x-show="activeTab === {{ $loop->index }}" x-cloak
-					x-transition:enter="transition ease-out duration-300"
-					x-transition:enter-start="opacity-0"
-					x-transition:enter-end="opacity-100"
-					x-transition:leave="transition ease-in duration-200"
-					x-transition:leave-start="opacity-100"
-					x-transition:leave-end="opacity-0">
-					@foreach ($items as $item)
-					<div class="__card bg-white radius grid grid-cols-1 md:grid-cols-2 section-gap items-center p-6 pb-10 md:p-10">
-						@if(!empty($item['image']))
-						<div class="relative overflow-hidden radius">
-							<img class="__img w-full img-xl object-cover" src="{{ $item['image']['url'] }}" alt="{{ $item['image']['alt'] ?? '' }}" />
-						</div>
-						@endif
-						<div class="__content relative ">
-							@if (!empty($item['header']))
-							<h6 class="text-body mb-4">{{ $item['header'] }}</h6>
-							@endif
-							@if (!empty($item['text']))
-							<div class="text-sm">{!! $item['text'] !!}</div>
-							@endif
-						<!-- 	<a href="#" class="main-btn mt-4">
-								Dowiedz się więcej
-							</a> -->
-						</div>
-					</div>
-					@endforeach
-				</div>
-				@endforeach
-			</div>
-
-		</div>
-		@endif
-
-		@if (!empty($g_tabs['button']))
-		<div class="mt-10 text-center">
-			<a href="{{ $g_tabs['button']['url'] }}" class="main-btn m-btn" target="{{ $g_tabs['button']['target'] ?? '_self' }}">
-				{{ $g_tabs['button']['title'] }}
-			</a>
-		</div>
-		@endif
 	</div>
+
 </section>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>

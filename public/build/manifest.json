@@ -1,33 +1,24 @@
 {
-  "_pagination-BPnzD6mW.js": {
-    "file": "assets/pagination-BPnzD6mW.js",
+  "_pagination-E0OHS4n7.js": {
+    "file": "assets/pagination-E0OHS4n7.js",
     "name": "pagination",
     "imports": [
-      "resources/js/app.js",
-      "_swiper-CD8AQJ2G.js"
+      "resources/js/app.js"
     ],
     "css": [
-      "assets/pagination-D8gyGEei.css"
+      "assets/pagination-UScTrRJn.css"
     ]
   },
-  "_pagination-D8gyGEei.css": {
-    "file": "assets/pagination-D8gyGEei.css",
-    "src": "_pagination-D8gyGEei.css"
-  },
-  "_swiper-CD8AQJ2G.js": {
-    "file": "assets/swiper-CD8AQJ2G.js",
-    "name": "swiper"
-  },
-  "_swiper-HzbfsHSZ.css": {
-    "file": "assets/swiper-HzbfsHSZ.css",
-    "src": "_swiper-HzbfsHSZ.css"
+  "_pagination-UScTrRJn.css": {
+    "file": "assets/pagination-UScTrRJn.css",
+    "src": "_pagination-UScTrRJn.css"
   },
   "editor.deps.json": {
     "file": "assets/editor.deps-DxpY22xl.json",
     "src": "editor.deps.json"
   },
   "resources/css/app.css": {
-    "file": "assets/app-CNXMmCm4.css",
+    "file": "assets/app-BRs4kQot.css",
     "name": "app",
     "names": [
       "app.css"
@@ -44,7 +35,7 @@
     ]
   },
   "resources/css/editor.css": {
-    "file": "assets/editor-CnwNGSGd.css",
+    "file": "assets/editor-Dlas4H-e.css",
     "name": "editor",
     "names": [
       "editor.css"
@@ -77,13 +68,10 @@
     "src": "resources/fonts/Now-Thin.otf"
   },
   "resources/js/app.js": {
-    "file": "assets/app-BY6wxfjm.js",
+    "file": "assets/app-Cm2YZVL1.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
-    "imports": [
-      "_swiper-CD8AQJ2G.js"
-    ],
     "dynamicImports": [
       "resources/js/blocks/help.js",
       "resources/js/blocks/team.js",
@@ -97,118 +85,90 @@
     ]
   },
   "resources/js/blocks/currency-rates.js": {
-    "file": "assets/currency-rates-Bs6BNRWK.js",
+    "file": "assets/currency-rates-CIHVsNZv.js",
     "name": "currency-rates",
     "src": "resources/js/blocks/currency-rates.js",
     "isDynamicEntry": true
   },
   "resources/js/blocks/help.js": {
-    "file": "assets/help-BVzgGhsW.js",
+    "file": "assets/help-C08p9YH8.js",
     "name": "help",
     "src": "resources/js/blocks/help.js",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_pagination-BPnzD6mW.js",
-      "_swiper-CD8AQJ2G.js"
+      "_pagination-E0OHS4n7.js"
     ],
     "css": [
-      "assets/help-DB3K95Vy.css",
-      "assets/swiper-HzbfsHSZ.css"
+      "assets/help-DB3K95Vy.css"
     ]
   },
   "resources/js/blocks/places.js": {
-    "file": "assets/places-DjlS74BN.js",
+    "file": "assets/places-B_QbfyuQ.js",
     "name": "places",
     "src": "resources/js/blocks/places.js",
     "isDynamicEntry": true,
     "imports": [
-      "resources/js/app.js",
-      "_swiper-CD8AQJ2G.js"
+      "resources/js/app.js"
     ]
   },
   "resources/js/blocks/reviews.js": {
-    "file": "assets/reviews-C7KMQZkY.js",
+    "file": "assets/reviews-vxt6DGu0.js",
     "name": "reviews",
     "src": "resources/js/blocks/reviews.js",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_pagination-BPnzD6mW.js",
-      "_swiper-CD8AQJ2G.js"
-    ],
-    "css": [
-      "assets/swiper-HzbfsHSZ.css"
+      "_pagination-E0OHS4n7.js"
     ]
   },
   "resources/js/blocks/slider.js": {
-    "file": "assets/slider-CBSf9WXo.js",
+    "file": "assets/slider-CjwLnMMe.js",
     "name": "slider",
     "src": "resources/js/blocks/slider.js",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_pagination-BPnzD6mW.js",
-      "_swiper-CD8AQJ2G.js"
+      "_pagination-E0OHS4n7.js"
     ],
     "css": [
-      "assets/slider-x1XGuNl0.css",
-      "assets/swiper-HzbfsHSZ.css"
+      "assets/slider-x1XGuNl0.css"
     ]
   },
   "resources/js/blocks/slides.js": {
-    "file": "assets/slides-CcieI_EL.js",
+    "file": "assets/slides-BPIwEVP3.js",
     "name": "slides",
     "src": "resources/js/blocks/slides.js",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_pagination-BPnzD6mW.js",
-      "_swiper-CD8AQJ2G.js"
-    ],
-    "css": [
-      "assets/swiper-HzbfsHSZ.css"
+      "_pagination-E0OHS4n7.js"
     ]
   },
   "resources/js/blocks/speakers.js": {
-    "file": "assets/speakers-BLV_b29e.js",
+    "file": "assets/speakers-CHrtUBau.js",
     "name": "speakers",
     "src": "resources/js/blocks/speakers.js",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_pagination-BPnzD6mW.js",
-      "_swiper-CD8AQJ2G.js"
-    ],
-    "css": [
-      "assets/swiper-HzbfsHSZ.css"
+      "_pagination-E0OHS4n7.js"
     ]
   },
   "resources/js/blocks/tabs.js": {
-    "file": "assets/tabs-ZgcunYPL.js",
+    "file": "assets/tabs-D1raKzek.js",
     "name": "tabs",
     "src": "resources/js/blocks/tabs.js",
-    "isDynamicEntry": true,
-    "imports": [
-      "_swiper-CD8AQJ2G.js"
-    ],
-    "css": [
-      "assets/tabs-BlRuW1W2.css",
-      "assets/swiper-HzbfsHSZ.css"
-    ]
+    "isDynamicEntry": true
   },
   "resources/js/blocks/team.js": {
-    "file": "assets/team-DhZfRqJa.js",
+    "file": "assets/team-D9oLrApI.js",
     "name": "team",
     "src": "resources/js/blocks/team.js",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_pagination-BPnzD6mW.js",
-      "_swiper-CD8AQJ2G.js"
-    ],
-    "css": [
-      "assets/swiper-HzbfsHSZ.css"
+      "_pagination-E0OHS4n7.js"
     ]
   },
   "resources/js/editor.js": {

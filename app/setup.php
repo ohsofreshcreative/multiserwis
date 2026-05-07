@@ -844,3 +844,4 @@ add_action('acf/save_post', function ($post_id) {
 }, 20);
 
 add_filter('run_wptexturize', '__return_false');
+

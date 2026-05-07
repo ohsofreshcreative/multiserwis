@@ -4,175 +4,159 @@ namespace App\Blocks;
 
 use Log1x\AcfComposer\Block;
 use StoutLogic\AcfBuilder\FieldsBuilder;
-use App\Support\SectionClasses;
 
 class Tabs extends Block
 {
-	public $name = 'Zakładki';
-	public $description = 'tabs';
-	public $slug = 'tabs';
-	public $category = 'formatting';
-	public $icon = 'table-row-after';
-	public $keywords = ['tabs', 'kafelki'];
-	public $mode = 'edit';
-	public $supports = [
-		'align' => false,
-		'mode' => false,
-		'jsx' => true,
-	];
+    public $name = 'Zakładki';
+    public $description = 'tabs';
+    public $slug = 'tabs';
+    public $category = 'formatting';
+    public $icon = 'welcome-widgets-menus';
+    public $keywords = ['tabs', 'kafelki'];
+    public $mode = 'edit';
+    public $supports = [
+        'align' => false,
+        'mode' => false,
+        'jsx' => true,
+    ];
 
-	public function fields()
-	{
-		$tabs = new FieldsBuilder('tabs');
+    public function fields()
+    {
+        $tabs = new FieldsBuilder('tabs');
 
-		$tabs
-			->setLocation('block', '==', 'acf/tabs') // ważne!
-			->addText('block-title', [
-				'label' => 'Tytuł',
-				'required' => 0,
-			])
-			->addAccordion('accordion1', [
-				'label' => 'Zakładki',
-				'open' => false,
-				'multi_expand' => true,
-			])
+        $tabs
+            ->setLocation('block', '==', 'acf/tabs')
 
-			/*--- TAB #1 ---*/
-			->addTab('Treści', ['placement' => 'top'])
-			->addGroup('g_tabs', ['label' => ''])
-			->addText('header', ['label' => 'Nagłówek'])
-			->addTextarea('text', [
-				'label' => 'Opis',
-				'rows' => 4,
-				'new_lines' => 'br',
-			])
-			->addLink('button', [
-				'label' => 'Przycisk',
-				'return_format' => 'array',
-			])
-			->endGroup()
+            ->addText('block-title', [
+                'label' => 'Tytuł',
+                'required' => 0,
+            ])
+            ->addAccordion('accordion1', [
+                'label' => 'Zakładki',
+                'open' => false,
+                'multi_expand' => true,
+            ])
 
-			/*--- TAB #2 ---*/
-			->addTab('Kafelki', ['placement' => 'top'])
-			->addRepeater('r_tabs', [
-				'label' => 'Kafelki',
-				'layout' => 'table',
-				'min' => 1,
-				'button_label' => 'Dodaj kafelek',
-			])
-			->addImage('image', [
-				'label' => 'Obraz',
-				'return_format' => 'array',
-				'preview_size' => 'medium',
-			])
-			->addText('header', [
-				'label' => 'Nagłówek',
-				'required' => 1,
-			])
-			->addWysiwyg('text', [
-				'label' => 'Treść',
-				'tabs' => 'all',
-				'toolbar' => 'full',
-				'media_upload' => true,
-			])
-			->endRepeater()
+            /*--- TREŚCI NAGŁÓWKA ---*/
+            ->addTab('Treści', ['placement' => 'top'])
+            ->addGroup('g_tabs', ['label' => ''])
+                ->addText('title', ['label' => 'Tytuł'])
+                ->addText('txt', ['label' => 'Opis'])
+            ->endGroup()
 
-			/*--- USTAWIENIA BLOKU ---*/
-			->addTab('Ustawienia bloku', ['placement' => 'top'])
-			->addText('section_id', [
-				'label' => 'ID',
-			])
-			->addText('section_class', [
-				'label' => 'Dodatkowe klasy CSS',
-			])
-			->addTrueFalse('flip', [
-				'label' => 'Odwrotna kolejność',
-				'ui' => 1,
-				'ui_on_text' => 'Tak',
-				'ui_off_text' => 'Nie',
-			])
-			->addTrueFalse('wide', [
-				'label' => 'Szeroka kolumna',
-				'ui' => 1,
-				'ui_on_text' => 'Tak',
-				'ui_off_text' => 'Nie',
-			])
-			->addTrueFalse('nomt', [
-				'label' => 'Usunięcie marginesu górnego',
-				'ui' => 1,
-				'ui_on_text' => 'Tak',
-				'ui_off_text' => 'Nie',
-			])
-			->addTrueFalse('gap', [
-				'label' => 'Większy odstęp',
-				'ui' => 1,
-				'ui_on_text' => 'Tak',
-				'ui_off_text' => 'Nie',
-			])
-			->addSelect('background', [
-				'label' => 'Kolor tła',
-				'choices' => [
-					'none' => 'Brak (domyślne)',
-					'section-white' => 'Białe',
-					'section-light' => 'Jasne',
-					'section-gray' => 'Szare',
-					'section-brand' => 'Marki',
-					'section-gradient' => 'Gradient',
-					'section-dark' => 'Ciemne',
-				],
-				'default_value' => 'none',
-				'ui' => 0,
-				'allow_null' => 0,
-			]);
+            /*--- KAFELKI / ZAKŁADKI ---*/
+            ->addTab('Kafelki', ['placement' => 'top'])
+            ->addRepeater('r_tabs', [
+                'label' => 'Zakładki',
+                'layout' => 'block',
+                'min' => 1,
+                'max' => 8,
+                'button_label' => 'Dodaj zakładkę',
+            ])
+                ->addText('tab', [
+                    'label' => 'Nazwa punktu',
+                    'required' => 1,
+                ])
+                ->addTextarea('tab_desc', [
+                    'label' => 'Adres',
+                    'rows' => 2,
+                    'new_lines' => 'br',
+                ])
+                ->addText('tab_extra', [
+                    'label' => 'Numer telefonu',
+                ])
+                ->addText('tab_title', [
+                    'label' => 'Nagłówek treści (prawy panel)',
+                ])
+                ->addNumber('map_lat', [
+                    'label' => 'Lat (do podświetlenia po kliknięciu)',
+                    'step' => 'any',
+                ])
+                ->addNumber('map_lng', [
+                    'label' => 'Lng (do podświetlenia po kliknięciu)',
+                    'step' => 'any',
+                ])
+            ->endRepeater()
 
-		return $tabs;
-	}
+            /*--- WSPÓLNA MAPA ---*/
+            ->addTab('Mapa (wspólna)', ['placement' => 'top'])
+            ->addRepeater('locations', [
+                'label' => 'Lokalizacje na mapie',
+                'layout' => 'block',
+                'button_label' => 'Dodaj lokalizację',
+            ])
+                ->addText('label', ['label' => 'Etykieta (krótka)'])
+                ->addTextarea('address', [
+                    'label' => 'Adres / treść popupa',
+                    'rows' => 4,
+                    'new_lines' => 'br',
+                ])
+                ->addNumber('lat', ['label' => 'Lat', 'step' => 'any'])
+                ->addNumber('lng', ['label' => 'Lng', 'step' => 'any'])
+            ->endRepeater()
+            ->addNumber('map_zoom', [
+                'label' => 'Zoom początkowy (opcjonalnie)',
+                'min' => 1,
+                'max' => 19,
+            ])
 
-	public function with()
-	{
-		$r_tabs = get_field('r_tabs');
+            /*--- USTAWIENIA BLOKU ---*/
+            ->addTab('Ustawienia bloku', ['placement' => 'top'])
+            ->addText('id', ['label' => 'ID'])
+            ->addText('class', ['label' => 'Dodatkowe klasy CSS'])
+            ->addTrueFalse('flip', [
+                'label' => 'Odwrotna kolejność',
+                'ui' => 1, 'ui_on_text' => 'Tak', 'ui_off_text' => 'Nie',
+            ])
+            ->addTrueFalse('wide', [
+                'label' => 'Szeroka kolumna',
+                'ui' => 1, 'ui_on_text' => 'Tak', 'ui_off_text' => 'Nie',
+            ])
+            ->addTrueFalse('nomt', [
+                'label' => 'Usunięcie marginesu górnego',
+                'ui' => 1, 'ui_on_text' => 'Tak', 'ui_off_text' => 'Nie',
+            ])
+            ->addTrueFalse('gap', [
+                'label' => 'Większy odstęp',
+                'ui' => 1, 'ui_on_text' => 'Tak', 'ui_off_text' => 'Nie',
+            ])
+            ->addTrueFalse('lightbg', [
+                'label' => 'Jasne tło',
+                'ui' => 1, 'ui_on_text' => 'Tak', 'ui_off_text' => 'Nie',
+            ])
+            ->addTrueFalse('graybg', [
+                'label' => 'Szare tło',
+                'ui' => 1, 'ui_on_text' => 'Tak', 'ui_off_text' => 'Nie',
+            ])
+            ->addTrueFalse('whitebg', [
+                'label' => 'Białe tło',
+                'ui' => 1, 'ui_on_text' => 'Tak', 'ui_off_text' => 'Nie',
+            ])
+            ->addTrueFalse('brandbg', [
+                'label' => 'Tło marki',
+                'ui' => 1, 'ui_on_text' => 'Tak', 'ui_off_text' => 'Nie',
+            ]);
 
-		$grouped_tabs = [];
-		foreach (($r_tabs ?? []) as $item) {
-			$tabName = trim((string) ($item['header'] ?? ''));
-			if ($tabName === '') {
-				continue;
-			}
-			$grouped_tabs[$tabName][] = $item;
-		}
+        return $tabs;
+    }
 
-		$fields = [
-			'flip' => (bool) get_field('flip'),
-			'wide' => (bool) get_field('wide'),
-			'nomt' => (bool) get_field('nomt'),
-			'gap' => (bool) get_field('gap'),
-			'background' => get_field('background'),
-
-		];
-
-		$sectionClass = SectionClasses::fromMap($fields, [
-			'flip' => 'order-flip',
-			'wide' => 'wide',
-			'nomt' => '!mt-0',
-			'gap' => 'wider-gap',
-
-		]);
-
-		return [
-			'g_tabs' => get_field('g_tabs'),
-			'r_tabs' => $r_tabs,
-			'grouped_tabs' => $grouped_tabs,
-
-			'section_id' => get_field('section_id'),
-			'section_class' => get_field('section_class'),
-
-			'flip' => $fields['flip'],
-			'wide' => $fields['wide'],
-			'nomt' => $fields['nomt'],
-			'gap' => $fields['gap'],
-			'background' => $fields['background'],
-
-			'sectionClass' => $sectionClass,
-		];
-	}
+    public function with()
+    {
+        return [
+            'g_tabs'    => get_field('g_tabs'),
+            'r_tabs'    => get_field('r_tabs'),
+            'locations' => get_field('locations'),
+            'map_zoom'  => get_field('map_zoom'),
+            'id'        => get_field('id'),
+            'class'     => get_field('class'),
+            'flip'      => get_field('flip'),
+            'wide'      => get_field('wide'),
+            'nomt'      => get_field('nomt'),
+            'gap'       => get_field('gap'),
+            'lightbg'   => get_field('lightbg'),
+            'graybg'    => get_field('graybg'),
+            'whitebg'   => get_field('whitebg'),
+            'brandbg'   => get_field('brandbg'),
+        ];
+    }
 }
