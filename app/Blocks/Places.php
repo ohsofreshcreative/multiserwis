@@ -142,18 +142,32 @@ class Places extends Block
 		return $places;
 	}
 
-	public function with()
+	public function with(): array
 	{
-		return [
+		$fields = [
 			'g_places' => get_field('g_places'),
 			'r_places' => get_field('r_places'),
+
 			'section_id' => get_field('section_id'),
 			'section_class' => get_field('section_class'),
-			'flip' => get_field('flip'),
-			'wide' => get_field('wide'),
-			'nomt' => get_field('nomt'),
-			'gap' => get_field('gap'),
-			'background' => get_field('background'),
+
+			'flip' => (bool) get_field('flip'),
+			'wide' => (bool) get_field('wide'),
+			'nomt' => (bool) get_field('nomt'),
+			'gap' => (bool) get_field('gap'),
+
+			'background' => get_field('background') ?: 'none',
 		];
+
+		$fields['sectionClass'] = SectionClasses::fromMap($fields, [
+			'flip' => 'order-flip',
+			'wide' => 'wide',
+			'nomt' => '!mt-0',
+			'gap' => 'wider-gap',
+		]);
+
+		return $fields;
 	}
 }
+
+

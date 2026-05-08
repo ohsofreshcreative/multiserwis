@@ -18,6 +18,12 @@ class ThemeSettings extends Field
                 'return_format' => 'array', // lub 'url' / 'id'
                 'preview_size' => 'medium',
                 'library' => 'all',
+            ])
+            ->addImage('logo_footer', [
+                'label' => 'Logo Stopka',
+                'return_format' => 'array', // lub 'url' / 'id'
+                'preview_size' => 'medium',
+                'library' => 'all',
             ]);
 
         return [$theme];

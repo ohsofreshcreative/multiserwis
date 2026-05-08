@@ -1529,14 +1529,14 @@
           "color": "rgb(var(--s-100))"
         },
         {
+          "name": "Secondary (200)",
+          "slug": "secondary-200",
+          "color": "rgb(var(--s-200))"
+        },
+        {
           "name": "Secondary (300)",
           "slug": "secondary-300",
           "color": "rgb(var(--s-300))"
-        },
-        {
-          "name": "Secondary (400)",
-          "slug": "secondary-400",
-          "color": "rgb(var(--s-400))"
         },
         {
           "name": "Secondary (500)",
