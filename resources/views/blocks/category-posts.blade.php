@@ -13,13 +13,13 @@ $sectionClass .= $brandbg ? ' section-brand' : '';
 
 <!--- category-posts -->
 
-<div data-gsap-anim="section" @if(!empty($section_id)) id="{{ $section_id }}" @endif class="block-category-posts -smt {{ $sectionClass }} {{ $section_class }}">
+<div data-gsap-anim="section" @if(!empty($section_id)) id="{{ $section_id }}" @endif class="b-category-posts -smt {{ $sectionClass }} {{ $section_class }}">
 	<div class="c-main">
 		<div class="grid">
 
 			<div class="flex flex-col md:flex-row justify-between">
 				@if($posts_settings['title'])
-				<h2 data-gsap-element="title" class="text-h3">{{ $posts_settings['title'] }}</h2>
+				<h2 data-gsap-element="title" class="">{{ $posts_settings['title'] }}</h2>
 				@endif
 				@if (!empty($posts_settings['button']))
 				<a data-gsap-element="btn" class="second-btn" href="{{ $posts_settings['button']['url'] }}">{{ $posts_settings['button']['title'] }}</a>
@@ -32,15 +32,20 @@ $sectionClass .= $brandbg ? ' section-brand' : '';
 				@php
 				$thumbnail_url = $show_image && has_post_thumbnail($post->ID) ? get_the_post_thumbnail_url($post->ID, 'large') : '';
 				@endphp
-				<a href="{{ get_permalink($post->ID) }}" class="relative h-full bg-white p-10">
-					<div class="__content relative z-10">
-						<h6 class="">{{ get_the_title($post->ID) }}</h6>
-						<span class="text-sm block mt-1">
-							{{ get_the_date('', $post->ID) }}
-						</span>
-						<p class="mt-2">{{ get_the_excerpt($post) }}</p>
+
+				<div data-gsap-element="card" class="__content relative bg-white border-l-2 border-secondary border-dotted flex items-center gap-10 p-10">
+					<span class="post-date leading-none text-h4 text-secondary">
+						<span class="block">{{ get_the_date('d/m', $post->ID) }}</span>
+						<span class="block">{{ get_the_date('Y', $post->ID) }}</span>
+					</span>
+					<div>
+						<h6 class="mt-4">{{ get_the_title($post->ID) }}</h6>
+						<div class="mt-2">
+							{!! apply_filters('the_content', $post->post_excerpt ?: $post->post_content) !!}
+						</div>
 					</div>
-				</a>
+				</div>
+
 				@endforeach
 			</div>
 

@@ -1,4 +1,4 @@
-<footer class="footer bg-primary overflow-hidden relative z-10">
+<footer class="footer bg-primary overflow-hidden relative z-10 -smt">
 	<div class="__wrapper c-main relative z-10">
 		<div class="__top flex flex-col md:flex-row items-center justify-between gap-6 mt-20">
 			<img src="{{ $logo_footer['url'] }}" alt="{{ $logo_footer['alt'] ?? 'Logo' }}" class="relative w-auto max-w-46">

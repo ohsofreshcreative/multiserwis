@@ -1,6 +1,6 @@
 {
-  "_pagination-E0OHS4n7.js": {
-    "file": "assets/pagination-E0OHS4n7.js",
+  "_pagination-C8NE9qIo.js": {
+    "file": "assets/pagination-C8NE9qIo.js",
     "name": "pagination",
     "imports": [
       "resources/js/app.js"
@@ -18,24 +18,16 @@
     "src": "editor.deps.json"
   },
   "resources/css/app.css": {
-    "file": "assets/app-CSEYKlJ5.css",
+    "file": "assets/app-DZBtcFtw.css",
     "name": "app",
     "names": [
       "app.css"
     ],
     "src": "resources/css/app.css",
-    "isEntry": true,
-    "assets": [
-      "assets/Now-Thin-BQiLRTqq.otf",
-      "assets/Now-Light-D_BQiK0w.otf",
-      "assets/Now-Regular-CdXwq_-5.otf",
-      "assets/Now-Medium-BahrfMlU.otf",
-      "assets/Now-Bold-kpnGyuzC.otf",
-      "assets/Now-Black-DTDM_WDI.otf"
-    ]
+    "isEntry": true
   },
   "resources/css/editor.css": {
-    "file": "assets/editor-DguMPyoY.css",
+    "file": "assets/editor-DQ_rgZEs.css",
     "name": "editor",
     "names": [
       "editor.css"
@@ -43,32 +35,8 @@
     "src": "resources/css/editor.css",
     "isEntry": true
   },
-  "resources/fonts/Now-Black.otf": {
-    "file": "assets/Now-Black-DTDM_WDI.otf",
-    "src": "resources/fonts/Now-Black.otf"
-  },
-  "resources/fonts/Now-Bold.otf": {
-    "file": "assets/Now-Bold-kpnGyuzC.otf",
-    "src": "resources/fonts/Now-Bold.otf"
-  },
-  "resources/fonts/Now-Light.otf": {
-    "file": "assets/Now-Light-D_BQiK0w.otf",
-    "src": "resources/fonts/Now-Light.otf"
-  },
-  "resources/fonts/Now-Medium.otf": {
-    "file": "assets/Now-Medium-BahrfMlU.otf",
-    "src": "resources/fonts/Now-Medium.otf"
-  },
-  "resources/fonts/Now-Regular.otf": {
-    "file": "assets/Now-Regular-CdXwq_-5.otf",
-    "src": "resources/fonts/Now-Regular.otf"
-  },
-  "resources/fonts/Now-Thin.otf": {
-    "file": "assets/Now-Thin-BQiLRTqq.otf",
-    "src": "resources/fonts/Now-Thin.otf"
-  },
   "resources/js/app.js": {
-    "file": "assets/app-Cm2YZVL1.js",
+    "file": "assets/app-aIdhlO_6.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
@@ -79,32 +47,46 @@
       "resources/js/blocks/reviews.js",
       "resources/js/blocks/places.js",
       "resources/js/blocks/tabs.js",
+      "resources/js/blocks/cantors.js",
       "resources/js/blocks/slides.js",
       "resources/js/blocks/slider.js",
+      "resources/js/blocks/hero-sub.js",
       "resources/js/blocks/currency-rates.js"
     ]
   },
+  "resources/js/blocks/cantors.js": {
+    "file": "assets/cantors-0P4qU3bx.js",
+    "name": "cantors",
+    "src": "resources/js/blocks/cantors.js",
+    "isDynamicEntry": true
+  },
   "resources/js/blocks/currency-rates.js": {
-    "file": "assets/currency-rates-CIHVsNZv.js",
+    "file": "assets/currency-rates-Bs6BNRWK.js",
     "name": "currency-rates",
     "src": "resources/js/blocks/currency-rates.js",
     "isDynamicEntry": true
   },
   "resources/js/blocks/help.js": {
-    "file": "assets/help-C08p9YH8.js",
+    "file": "assets/help-Dla1opaJ.js",
     "name": "help",
     "src": "resources/js/blocks/help.js",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_pagination-E0OHS4n7.js"
+      "_pagination-C8NE9qIo.js"
     ],
     "css": [
       "assets/help-DB3K95Vy.css"
     ]
   },
+  "resources/js/blocks/hero-sub.js": {
+    "file": "assets/hero-sub-BhjUWoCi.js",
+    "name": "hero-sub",
+    "src": "resources/js/blocks/hero-sub.js",
+    "isDynamicEntry": true
+  },
   "resources/js/blocks/places.js": {
-    "file": "assets/places-B_QbfyuQ.js",
+    "file": "assets/places-Dqzhr05n.js",
     "name": "places",
     "src": "resources/js/blocks/places.js",
     "isDynamicEntry": true,
@@ -113,62 +95,62 @@
     ]
   },
   "resources/js/blocks/reviews.js": {
-    "file": "assets/reviews-vxt6DGu0.js",
+    "file": "assets/reviews-BkxaJ7K8.js",
     "name": "reviews",
     "src": "resources/js/blocks/reviews.js",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_pagination-E0OHS4n7.js"
+      "_pagination-C8NE9qIo.js"
     ]
   },
   "resources/js/blocks/slider.js": {
-    "file": "assets/slider-CjwLnMMe.js",
+    "file": "assets/slider-yHV_LFs8.js",
     "name": "slider",
     "src": "resources/js/blocks/slider.js",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_pagination-E0OHS4n7.js"
+      "_pagination-C8NE9qIo.js"
     ],
     "css": [
       "assets/slider-x1XGuNl0.css"
     ]
   },
   "resources/js/blocks/slides.js": {
-    "file": "assets/slides-BPIwEVP3.js",
+    "file": "assets/slides-D8lrU8dQ.js",
     "name": "slides",
     "src": "resources/js/blocks/slides.js",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_pagination-E0OHS4n7.js"
+      "_pagination-C8NE9qIo.js"
     ]
   },
   "resources/js/blocks/speakers.js": {
-    "file": "assets/speakers-CHrtUBau.js",
+    "file": "assets/speakers-BfFNjUy9.js",
     "name": "speakers",
     "src": "resources/js/blocks/speakers.js",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_pagination-E0OHS4n7.js"
+      "_pagination-C8NE9qIo.js"
     ]
   },
   "resources/js/blocks/tabs.js": {
-    "file": "assets/tabs-D1raKzek.js",
+    "file": "assets/tabs-C1smwDMR.js",
     "name": "tabs",
     "src": "resources/js/blocks/tabs.js",
     "isDynamicEntry": true
   },
   "resources/js/blocks/team.js": {
-    "file": "assets/team-D9oLrApI.js",
+    "file": "assets/team-DuRZtiKT.js",
     "name": "team",
     "src": "resources/js/blocks/team.js",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_pagination-E0OHS4n7.js"
+      "_pagination-C8NE9qIo.js"
     ]
   },
   "resources/js/editor.js": {

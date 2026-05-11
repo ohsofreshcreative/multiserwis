@@ -8,12 +8,12 @@
 	$section_class => filled($section_class),
 	$background => filled($background) && $background !== 'none',
 	])>
-	
+
 	<div class="__wrapper c-wide bg-white radius">
 		<div class="__inside c-main section-py">
-			<div class="__top">
-				<h3 data-gsap-element="header" class="text-p-lighter text-center m-header">{{ strip_tags($g_places['header']) }}</h3>
-				<p data-gsap-element="txt">{{ $g_places['text'] }}</p>
+			<div class="__top w-full md:w-1/2">
+				<h2 data-gsap-element="header" class="text-p-lighter">{{ strip_tags($g_places['header']) }}</h2>
+				<p data-gsap-element="txt" class="mt-2">{{ $g_places['text'] }}</p>
 			</div>
 
 			@if (!empty($r_places))
@@ -22,7 +22,7 @@
 			$gridCols = 1;
 			if ($itemCount == 2) $gridCols = 2;
 			if ($itemCount == 3) $gridCols = 3;
-			if ($itemCount >= 4) $gridCols = 4; // Twój dotychczasowy warunek
+			if ($itemCount >= 4) $gridCols = 4;
 			$gridClass = $gridCols > 1 ? 'grid-cols-1 lg:grid-cols-' . $gridCols : 'grid-cols-1';
 			@endphp
 
@@ -32,14 +32,16 @@
 					@if (!empty($item['image']['url']))
 					<img class="mb-6" src="{{ $item['image']['url'] }}" alt="{{ $item['image']['alt'] ?? '' }}" />
 					@endif
-					<b class="">{{ $item['title'] }}</b>
-					<p class="">{!! $item['txt'] !!}</p>
-					@if(!empty($item['number']))
+					<b>{{ $item['name'] ?? '' }}</b>
+					<p>{!! $item['txt'] ?? '' !!}</p>
+
+					@if (!empty($item['phone']))
 					<div class="flex items-center gap-2">
-						<img src="/wp-content/uploads/2026/05/phone.svg" alt="Ikona telefonu" class="">
-						<span class="">{{ $item['number'] }}</span>
+						<img src="/wp-content/uploads/2026/05/phone.svg" alt="Ikona telefonu">
+						<a href="tel:{{ preg_replace('/\s+/', '', $item['phone']) }}">{{ $item['phone'] }}</a>
 					</div>
 					@endif
+
 					@if (!empty($item['navi']))
 					<x-button
 						:href="$item['navi']"
@@ -51,9 +53,6 @@
 					</x-button>
 					@endif
 				</div>
-
-
-
 				@endforeach
 			</div>
 			@endif

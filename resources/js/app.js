@@ -21,8 +21,10 @@ document.addEventListener('DOMContentLoaded', () => {
   if (document.querySelector('.b-reviews')) import('./blocks/reviews');
   if (document.querySelector('.b-places')) import('./blocks/places');
   if (document.querySelector('.b-tabs')) import('./blocks/tabs');
+  if (document.querySelector('.b-cantors')) import('./blocks/cantors');
   if (document.querySelector('.b-slides')) import('./blocks/slides');
   if (document.querySelector('.b-slider')) import('./blocks/slider');
+  if (document.querySelector('.b-hero-sub')) import('./blocks/hero-sub');
   if (document.querySelector('.b-currency-rates')) import('./blocks/currency-rates');
 });
 

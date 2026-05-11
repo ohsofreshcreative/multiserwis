@@ -5,53 +5,103 @@ namespace App\Blocks;
 use Log1x\AcfComposer\Block;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
-class Locations extends Block
+class Cantors extends Block
 {
-	public $name = 'Lokalizacje - TO DEL?';
-	public $description = 'locations';
-	public $slug = 'locations';
+	public $name = 'Nasze kantory';
+	public $description = 'cantors';
+	public $slug = 'cantors';
 	public $category = 'formatting';
 	public $icon = 'location';
-	public $keywords = ['tresc', 'lokalizacje'];
+	public $keywords = ['kantory', 'kafelki'];
 	public $mode = 'edit';
 	public $supports = [
 		'align' => false,
 		'mode' => false,
 		'jsx' => true,
-		'anchor' => true,
-		'customClassName' => true,
 	];
 
 	public function fields()
 	{
-		$locations = new FieldsBuilder('locations');
+		$cantors = new FieldsBuilder('cantors');
 
-		$locations
-			->setLocation('block', '==', 'acf/locations') // ważne!
+		$cantors
+			->setLocation('block', '==', 'acf/cantors') // ważne!
 			->addText('block-title', [
 				'label' => 'Tytuł',
 				'required' => 0,
 			])
 			->addAccordion('accordion1', [
-				'label' => 'Lokalizacje',
+				'label' => 'Kantory',
 				'open' => false,
 				'multi_expand' => true,
 			])
-			/*--- GROUP ---*/
-			->addTab('Elementy', ['placement' => 'top'])
-			->addGroup('g_locations', ['label' => ''])
-			->addText('title', ['label' => 'Tytuł'])
-			->addWysiwyg('txt', [
-				'label' => 'Treść',
-				'tabs' => 'all', // 'visual', 'text', 'all'
-				'toolbar' => 'full', // 'basic', 'full'
-				'media_upload' => true,
+			/*--- TAB #1 ---*/
+			->addTab('Treści', ['placement' => 'top'])
+			->addGroup('g_cantors', ['label' => ''])
+			->addImage('bg', [
+				'label' => 'Tło',
+				'return_format' => 'array', 
+				'preview_size' => 'thumbnail',
 			])
-			->addLink('button', [
-				'label' => 'Przycisk',
-				'return_format' => 'array',
+			->addText('header', ['label' => 'Nagłówek'])
+			->addTextarea('text', [
+				'label' => 'Opis',
+				'rows' => 4,
+				'new_lines' => 'br',
 			])
+			->addRepeater('buttons', [
+				'label' => 'Przyciski',
+				'layout' => 'table',
+				'button_label' => 'Dodaj przycisk',
+			])
+				->addText('label', [
+					'label' => 'Etykieta',
+					'required' => 1,
+				])
+			->endRepeater()
 			->endGroup()
+
+			/*--- TAB #2 ---*/
+			->addTab('Kantory', ['placement' => 'top'])
+			->addRepeater('r_cantors', [
+				'label' => 'Kantory',
+				'layout' => 'row', // 'row', 'block', albo 'table'
+				'min' => 1,
+				'button_label' => 'Dodaj kantor'
+			])
+			->addImage('image', [
+				'label' => 'Obraz',
+				'return_format' => 'array', // lub 'url', lub 'id'
+				'preview_size' => 'thumbnail',
+			])
+			->addText('title', [
+				'label' => 'Nagłówek',
+			])
+			->addTextarea('address', [
+				'label' => 'Adres',
+				'rows' => 2,
+				'new_lines' => 'br',
+			])
+			->addText('phone', [
+				'label' => 'Telefon',
+			])
+			->addTextarea('hours', [
+				'label' => 'Godziny otwarcia',
+				'rows' => 2,
+				'new_lines' => 'br',
+			])
+			->addTextarea('navi', [
+				'label' => 'Nawigacja',
+			])
+			->addNumber('lat', [
+				'label' => 'Lat (szerokość geograficzna)',
+				'step' => 'any',
+			])
+			->addNumber('lng', [
+				'label' => 'Lng (długość geograficzna)',
+				'step' => 'any',
+			])
+			->endRepeater()
 
 			/*--- USTAWIENIA BLOKU ---*/
 
@@ -102,13 +152,14 @@ class Locations extends Block
                 'allow_null' => 0,
             ]);
 
-		return $locations;
+		return $cantors;
 	}
 
 	public function with()
 	{
 		return [
-			'g_locations' => get_field('g_locations'),
+			'g_cantors' => get_field('g_cantors'),
+			'r_cantors' => get_field('r_cantors'),
 			'section_id' => get_field('section_id'),
 			'section_class' => get_field('section_class'),
 			'flip' => get_field('flip'),

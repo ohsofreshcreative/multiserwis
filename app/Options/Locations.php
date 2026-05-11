@@ -36,6 +36,11 @@ class Locations extends Field
 				'button_label' => 'Dodaj placówkę',
 				'layout' => 'block',
 			])
+			->addImage('image', [
+				'label' => 'Obraz',
+				'return_format' => 'array', // lub 'url', lub 'id'
+				'preview_size' => 'thumbnail',
+			])
 			->addText('name', [
 				'label' => 'Nazwa placówki',
 				'required' => 1,
@@ -48,6 +53,9 @@ class Locations extends Field
 			->addText('phone', [
 				'label' => 'Telefon',
 				'required' => 1,
+			])
+			->addTextarea('navi', [
+				'label' => 'Nawigacja',
 			])
 			->endRepeater();
 

@@ -91,6 +91,9 @@ body {
 	overflow-x: clip;
 	background-color: var(--bg);
 	color: (--text-body);
+	background-image: url('http://multiserwis.local/wp-content/uploads/2026/05/bg.svg');
+	background-position: top center;
+	background-attachment: fixed;
 }
 
 /*--- !ROOT ---*/
@@ -134,54 +137,6 @@ body {
 	--footer-py: 156px 0;
 }
 
-@font-face {
-	font-family: 'Now';
-	src: url('../fonts/Now-Thin.otf') format('opentype');
-	font-weight: 100;
-	font-style: normal;
-	font-display: swap;
-}
-
-@font-face {
-	font-family: 'Now';
-	src: url('../fonts/Now-Light.otf') format('opentype');
-	font-weight: 300;
-	font-style: normal;
-	font-display: swap;
-}
-
-@font-face {
-	font-family: 'Now';
-	src: url('../fonts/Now-Regular.otf') format('opentype');
-	font-weight: 400;
-	font-style: normal;
-	font-display: swap;
-}
-
-@font-face {
-	font-family: 'Now';
-	src: url('../fonts/Now-Medium.otf') format('opentype');
-	font-weight: 500;
-	font-style: normal;
-	font-display: swap;
-}
-
-@font-face {
-	font-family: 'Now';
-	src: url('../fonts/Now-Bold.otf') format('opentype');
-	font-weight: 700;
-	font-style: normal;
-	font-display: swap;
-}
-
-@font-face {
-	font-family: 'Now';
-	src: url('../fonts/Now-Black.otf') format('opentype');
-	font-weight: 900;
-	font-style: normal;
-	font-display: swap;
-}
-
 /*--- !CONTAINERS ---*/
 
 .c-narrow {
@@ -211,11 +166,11 @@ body {
 
 .c-wide,
 .wide .c-main {
-	max-width: 95% !important;
-	margin: 0 auto;
+	max-width: 100% !important;
+	margin: 0 24px;
 	padding-left: 24px !important;
 	padding-right: 24px !important;
-	width: 100%;
+	width: calc(100% - 48px);
 }
 
 /*--- !OVERALL ---*/
@@ -304,6 +259,8 @@ body {
 .section-white {
 	background-color: #fff;
 	padding: var(--smt) 0;
+	margin:0 24px;
+	border-radius: var(--radius);
 }
 
 .section-s-light {
@@ -545,7 +502,7 @@ h5,
 h6,
 .text-h6 {
 	font-family: var(--header);
-	font-weight: 400;
+	font-weight: 500;
 }
 
 .big {
@@ -561,13 +518,13 @@ h1,
 
 h2,
 .text-h2 {
-	font-size: 60px !important;
+	font-size: 48px !important;
 	line-height: 3.7rem;
 }
 
 h3,
 .text-h3 {
-	font-size: 48px !important;
+	font-size: 40px !important;
 	line-height: 3.3rem;
 }
 
@@ -620,6 +577,10 @@ h6,
 
 .bg-gradient-light {
 	background: var(--gradient-light) !important;
+}
+
+.bg-light {
+	background: var(--bg-light) !important;
 }
 
 /*--- !BORDER & SHADOW ---*/
@@ -765,6 +726,17 @@ h6,
 
 .btn-outline-primary:hover {
 	background-color: var(--color-primary);
+	color: #fff;
+}
+
+.btn-outline-secondary {
+	background-color: transparent;
+	border-color: var(--color-secondary);
+	color: var(--color-secondary);
+}
+
+.btn-outline-secondary:hover {
+	background-color: var(--color-secondary-hover);
 	color: #fff;
 }
 

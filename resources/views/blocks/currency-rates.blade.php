@@ -5,34 +5,33 @@ $g = $g_rates;
 
 <section
 	@if(!empty($section_id)) id="{{ $section_id }}" @endif
-	class="b-currency-rates relative {{ $sectionClass }} {{ $section_class }}">
+	class="b-currency-rates relative pt-14 {{ $sectionClass }} {{ $section_class }}">
 
 	<div class="c-main">
-		@if(!empty($g['title']))
-		<h2 class="text-h2 mb-4">{{ $g['title'] }}</h2>
-		@endif
-
-		@if(!empty($g['txt']))
-		<div class="text-h5 text-secondary-light mb-6">{!! $g['txt'] !!}</div>
-		@endif
 
 		@if(empty($locations))
 		<p class="text-secondary-light">Brak danych — dodaj placówkę i wgraj plik w „Kursy walut → Opcje".</p>
 		@else
 		<div class="js-currency-rates" data-currency-rates>
-			@if(count($locations) > 1)
-			<div class="mb-6">
-				<label class="block mb-2 font-bold" for="currency-location">Placówka</label>
-				<select
-					id="currency-location"
-					class="js-currency-location border rounded px-4 py-2"
-					data-currency-select>
-					@foreach($locations as $i => $loc)
-					<option value="{{ $loc['slug'] ?? $i }}">{{ $loc['name'] ?? 'Placówka '.($i+1) }}</option>
-					@endforeach
-				</select>
+
+			<div class="__top flex justify-between">
+				@if(!empty($g['title']))
+				<h2 class="text-h2 mb-4">{{ $g['title'] }}</h2>
+				@endif
+				@if(count($locations) > 1)
+				<div class="mb-6">
+					<label class="block font-bold" for="currency-location">Kursy dla</label>
+					<select
+						id="currency-location"
+						class="js-currency-location border rounded px-4 py-2"
+						data-currency-select>
+						@foreach($locations as $i => $loc)
+						<option value="{{ $loc['slug'] ?? $i }}">{{ $loc['name'] ?? 'Placówka '.($i+1) }}</option>
+						@endforeach
+					</select>
+				</div>
+				@endif
 			</div>
-			@endif
 
 			@foreach($locations as $i => $loc)
 			<div
