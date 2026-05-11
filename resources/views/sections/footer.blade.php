@@ -14,7 +14,7 @@
 				variant="secondary"
 				class="!flex gap-2"
 				data-gsap-element="btn">
-				<img src="http://multiserwis.local/wp-content/uploads/2026/05/phone-white.svg" />+48 692 580 241
+				<img src="/wp-content/uploads/2026/05/phone-white.svg" />+48 692 580 241
 			</x-button>
 
 		</div>
