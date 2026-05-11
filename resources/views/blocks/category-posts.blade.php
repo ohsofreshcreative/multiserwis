@@ -17,7 +17,7 @@ $sectionClass .= $brandbg ? ' section-brand' : '';
 	<div class="c-main">
 		<div class="grid">
 
-			<div class="flex flex-col md:flex-row justify-between">
+			<div class="flex flex-col md:flex-row justify-between gap-6">
 				@if($posts_settings['title'])
 				<h2 data-gsap-element="title" class="">{{ $posts_settings['title'] }}</h2>
 				@endif
@@ -33,8 +33,8 @@ $sectionClass .= $brandbg ? ' section-brand' : '';
 				$thumbnail_url = $show_image && has_post_thumbnail($post->ID) ? get_the_post_thumbnail_url($post->ID, 'large') : '';
 				@endphp
 
-				<div data-gsap-element="card" class="__content relative bg-white border-l-2 border-secondary border-dotted flex items-center gap-10 p-10">
-					<span class="post-date leading-none text-h4 text-secondary">
+				<div data-gsap-element="card" class="__content relative bg-white border-l-2 border-secondary border-dotted flex flex-col md:flex-row items-start md:items-center gap-2 md:gap-10 p-10">
+					<span class="post-date leading-none text-h4 text-secondary flex flex-row md:flex-col gap-2">
 						<span class="block">{{ get_the_date('d/m', $post->ID) }}</span>
 						<span class="block">{{ get_the_date('Y', $post->ID) }}</span>
 					</span>

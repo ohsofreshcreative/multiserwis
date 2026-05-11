@@ -31,6 +31,12 @@ class CurrencyRates extends Block
 			->addTab('Treść', ['placement' => 'top'])
 			->addGroup('g_rates', ['label' => 'Treść'])
 			->addText('title',    ['label' => 'Tytuł sekcji'])
+			->addWysiwyg('txt', [
+				'label' => 'Treść',
+				'tabs' => 'all',
+				'toolbar' => 'full',
+				'media_upload' => true,
+			])
 			->addText('col_code', ['label' => 'Nagłówek: Waluta',  'default_value' => 'Waluta'])
 			->addText('col_buy',  ['label' => 'Nagłówek: Kupno',   'default_value' => 'Kupno'])
 			->addText('col_sell', ['label' => 'Nagłówek: Sprzedaż', 'default_value' => 'Sprzedaż'])

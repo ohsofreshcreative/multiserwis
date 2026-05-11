@@ -173,6 +173,22 @@ body {
 	width: calc(100% - 48px);
 }
 
+@media only screen and (max-width: 768px) {
+	.c-narrow,
+	.c-main,
+	.woocommerce-notices-wrapper,
+	.c-wide,
+	.wide .c-main {
+		max-width: 100% !important;
+		margin: 0 0px;
+		width: 100%;
+	}
+	.c-wide .c-main {
+		padding-left:0 !important;
+		padding-right:0 !important;
+	}
+}
+
 /*--- !OVERALL ---*/
 
 .-menu-mt {
@@ -1075,13 +1091,13 @@ h6,
 
 #mobile-menu-panel {
 	li a {
-		color: #fff;
+		color: var(--color-primary);
 		font-size: 20px;
 		font-weight: 300;
 	}
 
 	li a:hover {
-		color: var(--color-primary-400);
+		color: var(--color-primary-200);
 	}
 }
 

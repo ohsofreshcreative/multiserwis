@@ -9,6 +9,9 @@ $sectionClass .= $graybg ? ' section-gray' : '';
 $sectionClass .= $whitebg ? ' section-white' : '';
 $sectionClass .= $brandbg ? ' section-brand' : '';
 @endphp
+
+<!--- tabs --->
+
 <section data-gsap-anim="section" @if($id) id="{{ $id }}" @endif class="b-tabs -smt {{ $sectionClass }} {{ $class }}">
 	<div class="c-wide bg-white radius section-py">
 		<div class="c-main">
@@ -27,7 +30,7 @@ $sectionClass .= $brandbg ? ' section-brand' : '';
 				{{-- LEWY PANEL: TABS --}}
 				<div class="lg:col-span-3 h-full">
 					<div data-gsap-element="tabs"
-						class="flex flex-row lg:flex-col h-full js-tabs-nav gap-4 lg:gap-0 overflow-x-scroll lg:overflow-x-visible px-5 lg:px-0"
+						class="flex flex-col h-full js-tabs-nav gap-4 lg:gap-0 overflow-x-scroll lg:overflow-x-visible px-5 lg:px-0"
 						role="tablist" aria-orientation="vertical">
 						@foreach ($r_tabs as $i => $tab)
 						<button

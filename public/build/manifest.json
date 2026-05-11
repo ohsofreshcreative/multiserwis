@@ -1,6 +1,6 @@
 {
-  "_pagination-C8NE9qIo.js": {
-    "file": "assets/pagination-C8NE9qIo.js",
+  "_pagination-Gj2UbJga.js": {
+    "file": "assets/pagination-Gj2UbJga.js",
     "name": "pagination",
     "imports": [
       "resources/js/app.js"
@@ -18,7 +18,7 @@
     "src": "editor.deps.json"
   },
   "resources/css/app.css": {
-    "file": "assets/app-DZBtcFtw.css",
+    "file": "assets/app-CxZJoDCq.css",
     "name": "app",
     "names": [
       "app.css"
@@ -27,7 +27,7 @@
     "isEntry": true
   },
   "resources/css/editor.css": {
-    "file": "assets/editor-DQ_rgZEs.css",
+    "file": "assets/editor-e3cKU8U3.css",
     "name": "editor",
     "names": [
       "editor.css"
@@ -36,7 +36,7 @@
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-aIdhlO_6.js",
+    "file": "assets/app-XC5-il6Q.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
@@ -61,19 +61,19 @@
     "isDynamicEntry": true
   },
   "resources/js/blocks/currency-rates.js": {
-    "file": "assets/currency-rates-Bs6BNRWK.js",
+    "file": "assets/currency-rates-C7fP1qE-.js",
     "name": "currency-rates",
     "src": "resources/js/blocks/currency-rates.js",
     "isDynamicEntry": true
   },
   "resources/js/blocks/help.js": {
-    "file": "assets/help-Dla1opaJ.js",
+    "file": "assets/help-BD-TDHLP.js",
     "name": "help",
     "src": "resources/js/blocks/help.js",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_pagination-C8NE9qIo.js"
+      "_pagination-Gj2UbJga.js"
     ],
     "css": [
       "assets/help-DB3K95Vy.css"
@@ -86,7 +86,7 @@
     "isDynamicEntry": true
   },
   "resources/js/blocks/places.js": {
-    "file": "assets/places-Dqzhr05n.js",
+    "file": "assets/places-Bv9fpzMO.js",
     "name": "places",
     "src": "resources/js/blocks/places.js",
     "isDynamicEntry": true,
@@ -95,46 +95,46 @@
     ]
   },
   "resources/js/blocks/reviews.js": {
-    "file": "assets/reviews-BkxaJ7K8.js",
+    "file": "assets/reviews-42Tw3tpV.js",
     "name": "reviews",
     "src": "resources/js/blocks/reviews.js",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_pagination-C8NE9qIo.js"
+      "_pagination-Gj2UbJga.js"
     ]
   },
   "resources/js/blocks/slider.js": {
-    "file": "assets/slider-yHV_LFs8.js",
+    "file": "assets/slider-BbrqpaD_.js",
     "name": "slider",
     "src": "resources/js/blocks/slider.js",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_pagination-C8NE9qIo.js"
+      "_pagination-Gj2UbJga.js"
     ],
     "css": [
       "assets/slider-x1XGuNl0.css"
     ]
   },
   "resources/js/blocks/slides.js": {
-    "file": "assets/slides-D8lrU8dQ.js",
+    "file": "assets/slides-BSmmwtd1.js",
     "name": "slides",
     "src": "resources/js/blocks/slides.js",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_pagination-C8NE9qIo.js"
+      "_pagination-Gj2UbJga.js"
     ]
   },
   "resources/js/blocks/speakers.js": {
-    "file": "assets/speakers-BfFNjUy9.js",
+    "file": "assets/speakers-CD_mJhlm.js",
     "name": "speakers",
     "src": "resources/js/blocks/speakers.js",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_pagination-C8NE9qIo.js"
+      "_pagination-Gj2UbJga.js"
     ]
   },
   "resources/js/blocks/tabs.js": {
@@ -144,13 +144,13 @@
     "isDynamicEntry": true
   },
   "resources/js/blocks/team.js": {
-    "file": "assets/team-DuRZtiKT.js",
+    "file": "assets/team-BApv1jX9.js",
     "name": "team",
     "src": "resources/js/blocks/team.js",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_pagination-C8NE9qIo.js"
+      "_pagination-Gj2UbJga.js"
     ]
   },
   "resources/js/editor.js": {

@@ -1,6 +1,21 @@
 @php
 $sectionClass = '';
 $sectionClass .= $nomt ? ' !mt-0' : '';
+
+// Najnowszy wyróżniony (sticky) wpis – fallback do najnowszego zwykłego
+$sticky_ids = get_option('sticky_posts') ?: [];
+$featured_post = null;
+if (!empty($sticky_ids)) {
+$q = new \WP_Query([
+'post__in' => $sticky_ids,
+'posts_per_page' => 1,
+'ignore_sticky_posts' => 1,
+'orderby' => 'date',
+'order' => 'DESC',
+'no_found_rows' => true,
+]);
+if ($q->have_posts()) { $q->the_post(); $featured_post = get_post(); wp_reset_postdata(); }
+}
 @endphp
 
 <!-- hero --->
@@ -12,7 +27,7 @@ $sectionClass .= $nomt ? ' !mt-0' : '';
 
 	<div class=" __wrapper c-wide relative radius z-20 py-20" style="background-image:linear-gradient(rgba(5,7,54,0.5), rgba(5,7,54,0.5)), url('{{ $g_hero['image']['url'] }}'); background-size:cover; background-position:center;">
 		<div class="__inside c-main grid grid-cols-1 md:grid-cols-2 gap-10">
-			<div class="__content relative z-20 pt-10 pb-10 md:py-30">
+			<div class="__content relative flex flex-col justify-center z-20 pt-10 pb-10 md:py-30">
 				<h1 data-gsap-element="header" class="text-white bg-bg-brand">
 					{{ $g_hero['title'] }}
 				</h1>
@@ -35,6 +50,9 @@ $sectionClass .= $nomt ? ' !mt-0' : '';
 					@endif
 				</div>
 				@endif
+				<p data-gsap-element="txt" class="!font-bold text-lg text-white mt-20">
+					Nasze kantory są nadzorowane przez Narodowy Bank Polski
+				</p>
 			</div>
 			<div class="__calc relative z-20 self-center w-full max-w-md ml-auto bg-background backdrop-blur p-6 md:p-8 rounded-2xl shadow-xl"
 				x-data='msCurrencyCalc(@json($locations))'>
@@ -126,10 +144,10 @@ $sectionClass .= $nomt ? ' !mt-0' : '';
 					<div class="text-2xl font-bold">
 						<span x-text="formattedResult"></span> PLN
 					</div>
-					<div class="text-xs text-secondary-light mt-1" x-show="rate > 0">
-						Kurs: 1 <span x-text="currencyCode"></span> =
-						<span x-text="rate.toFixed(4).replace('.', ',')"></span> PLN
-					</div>
+				</div>
+
+				<div class="bg-primary !font-bold text-center text-sm text-white rounded-2xl border-2 border-dotted border-secondary px-10 py-6 mt-4">
+				Możliwość negocjacji cen powyżej równowartości 3000 PLN
 				</div>
 				@endif
 			</div>
@@ -137,5 +155,20 @@ $sectionClass .= $nomt ? ' !mt-0' : '';
 
 	</div>
 
+	@if($featured_post)
+	<div class="c-main !-mt-10 relative z-20 overflow-hidden">
+		<a href="{{ get_permalink($featured_post) }}"
+			class="flex flex-col md:flex-row gap-10 bg-primary border-2 border-secondary border-dotted rounded-2xl p-6 md:p-8">
+			<img class="w-16 h-16 relative z-20" src="/wp-content/uploads/2026/05/info.svg" />
+			<div class="w-full md:w-1/2 relative z-20">
+				<p class="text-h6 text-white mb-2">{{ get_the_title($featured_post) }}</p>
+				<p class="text-white">
+					{{ get_the_excerpt($featured_post) ?: wp_trim_words(strip_shortcodes($featured_post->post_content), 30) }}
+				</p>
+			</div>
+			<img class="absolute mix-blend-soft-light right-20 top-1/2 -translate-y-1/2 z-10 pointer-events-none" src="/wp-content/uploads/2026/05/info_bg.svg" />
+		</a>
+	</div>
+	@endif
 
 </section>

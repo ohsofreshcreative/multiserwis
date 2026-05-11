@@ -22,7 +22,7 @@
 		@php($locations = get_field('locat', 'option'))
 		@if ($locations)
 		@php($count = count($locations))
-		<div class="__widgets border-t border-secondary grid grid-cols-1 md:grid-cols-2 lg:[grid-template-columns:repeat(var(--lg-cols),minmax(0,1fr))] gap-1 md:gap-6 py-26 mt-12" style="--lg-cols: {{ $count }};">
+		<div class="__widgets border-t border-secondary grid grid-cols-1 md:grid-cols-2 lg:[grid-template-columns:repeat(var(--lg-cols),minmax(0,1fr))] gap-10 md:gap-6 py-26 mt-12" style="--lg-cols: {{ $count }};">
 			@foreach ($locations as $loc)
 			<div class="__location text-white">
 				@if (!empty($loc['name']))

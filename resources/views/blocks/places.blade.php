@@ -28,15 +28,15 @@
 
 			<div class="grid {{ $gridClass }} gap-8 mt-10">
 				@foreach ($r_places as $item)
-				<div data-gsap-element="card" class="__card relative bg-secondary/5 radius p-10">
+				<div data-gsap-element="card" class="__card relative bg-secondary/5 radius p-10 pt-18 mt-10">
 					@if (!empty($item['image']['url']))
-					<img class="mb-6" src="{{ $item['image']['url'] }}" alt="{{ $item['image']['alt'] ?? '' }}" />
+					<img class="absolute w-26 -top-13" src="{{ $item['image']['url'] }}" alt="{{ $item['image']['alt'] ?? '' }}" />
 					@endif
 					<b>{{ $item['name'] ?? '' }}</b>
 					<p>{!! $item['txt'] ?? '' !!}</p>
 
 					@if (!empty($item['phone']))
-					<div class="flex items-center gap-2">
+					<div class="flex items-center gap-2 mt-2">
 						<img src="/wp-content/uploads/2026/05/phone.svg" alt="Ikona telefonu">
 						<a href="tel:{{ preg_replace('/\s+/', '', $item['phone']) }}">{{ $item['phone'] }}</a>
 					</div>

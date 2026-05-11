@@ -15,15 +15,20 @@ $g = $g_rates;
 		<div class="js-currency-rates" data-currency-rates>
 
 			<div class="__top flex justify-between">
-				@if(!empty($g['title']))
-				<h2 class="text-h2 mb-4">{{ $g['title'] }}</h2>
-				@endif
+				<div>
+					@if(!empty($g['title']))
+					<h2 class="text-h2 mb-4">{{ $g['title'] }}</h2>
+					@endif
+					@if(!empty($g['txt']))
+					<div class="__txt">{!! $g['txt'] !!}</div>
+					@endif
+				</div>
 				@if(count($locations) > 1)
 				<div class="mb-6">
 					<label class="block font-bold" for="currency-location">Kursy dla</label>
 					<select
 						id="currency-location"
-						class="js-currency-location border rounded px-4 py-2"
+						class="js-currency-location !border-1 !border-primary-50 !rounded-full px-4 !py-2"
 						data-currency-select>
 						@foreach($locations as $i => $loc)
 						<option value="{{ $loc['slug'] ?? $i }}">{{ $loc['name'] ?? 'Placówka '.($i+1) }}</option>
@@ -37,19 +42,21 @@ $g = $g_rates;
 			<div
 				class="js-currency-panel {{ $i === 0 ? '' : 'hidden' }}"
 				data-currency-panel="{{ $loc['slug'] ?? $i }}">
-				<table class="w-full text-left border-collapse">
-					<thead>
-						<tr class="border-b">
-							<th class="py-3 px-4">{{ $g['col_code'] ?? 'Waluta' }}</th>
-							<th class="py-3 px-4">{{ $g['col_buy']  ?? 'Kupno' }}</th>
-							<th class="py-3 px-4">{{ $g['col_sell'] ?? 'Sprzedaż' }}</th>
-						</tr>
-					</thead>
-					<tbody>
-						@forelse($loc['rates'] ?? [] as $r)
+				<div role="table" class="w-full text-left mt-10">
+					<div role="row" class="grid grid-cols-[2fr_1fr_1fr] px-4 mb-2">
+						<div role="columnheader" class="!font-bold py-3">{{ $g['col_code'] ?? 'Waluta' }}</div>
+						<div role="columnheader" class="!font-bold py-3">{{ $g['col_buy']  ?? 'Kupno' }}</div>
+						<div role="columnheader" class="!font-bold py-3">{{ $g['col_sell'] ?? 'Sprzedaż' }}</div>
+					</div>
+
+					<div role="rowgroup" class="flex flex-col gap-3" data-currency-rows>
+						@forelse($loc['rates'] ?? [] as $idx => $r)
 						@php $info = \App\ms_currency_info($r['code']); @endphp
-						<tr class="border-b">
-							<td class="py-3 px-4">
+						<div role="row"
+							@class([ 'grid grid-cols-[2fr_1fr_1fr] items-center bg-white border border-secondary rounded-full px-4' , 'hidden'=> $idx >= 9,
+							])
+							@if($idx >= 9) data-currency-extra @endif>
+							<div role="cell" class="py-3">
 								<div class="flex items-center gap-3">
 									@if($info['flag'])
 									<img src="{{ $info['flag'] }}"
@@ -59,28 +66,42 @@ $g = $g_rates;
 										loading="lazy">
 									@endif
 									<span class="font-bold">{{ $info['code'] }}</span>
-									<span class="text-secondary-light">{{ $info['name'] }}</span>
+									<span class="text-secondary-light hidden sm:block">{{ $info['name'] }}</span>
 								</div>
-							</td>
-							<td class="py-3 px-4">{{ number_format($r['buy'],  4, ',', ' ') }}</td>
-							<td class="py-3 px-4">{{ number_format($r['sell'], 4, ',', ' ') }}</td>
-						</tr>
+							</div>
+							<div role="cell" class="py-3">{{ number_format($r['buy'],  4, ',', ' ') }}</div>
+							<div role="cell" class="py-3">{{ number_format($r['sell'], 4, ',', ' ') }}</div>
+						</div>
 						@empty
-						<tr>
-							<td colspan="3" class="py-3 px-4">Brak danych dla tej placówki.</td>
-						</tr>
+						<div role="row" class="py-3 px-4">
+							<div role="cell">Brak danych dla tej placówki.</div>
+						</div>
 						@endforelse
-					</tbody>
-				</table>
+					</div>
+				</div>
+
+
+				@if($updated_at)
+				<p class="mt-4 text-sm text-secondary-light">
+					Aktualizacja: {{ \Carbon\Carbon::parse($updated_at)->format('d.m.Y H:i') }}
+				</p>
+				@endif
+
+				@if(count($loc['rates'] ?? []) > 9)
+				<div class="mt-6 flex justify-center">
+					<x-button
+						type="button"
+						variant="secondary"
+						data-currency-toggle
+						data-label-more="{{ $g['btn_more'] ?? 'Zobacz wszystkie kursy' }}"
+						data-label-less="{{ $g['btn_less'] ?? 'Pokaż mniej' }}">
+						{{ $g['btn_more'] ?? 'Zobacz wszystkie kursy' }}
+					</x-button>
+				</div>
+				@endif
 			</div>
 			@endforeach
 		</div>
-
-		@if($updated_at)
-		<p class="mt-4 text-sm text-secondary-light">
-			Aktualizacja: {{ \Carbon\Carbon::parse($updated_at)->format('d.m.Y H:i') }}
-		</p>
-		@endif
 
 		@endif
 	</div>
