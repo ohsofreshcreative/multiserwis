@@ -16,7 +16,7 @@ class Product extends Block
 	public $mode = 'edit';
 	public $supports = [
 		'align' => false,
-		'mode' => false,
+		'mode' => true,
 		'jsx' => true,
 	];
 
@@ -26,15 +26,6 @@ class Product extends Block
 
 		$product
 			->setLocation('block', '==', 'acf/product') // ważne!
-			->addText('block-title', [
-				'label' => 'Tytuł',
-				'required' => 0,
-			])
-			->addAccordion('accordion1', [
-				'label' => 'Produkt',
-				'open' => false,
-				'multi_expand' => true,
-			])
 			/*--- FIELDS ---*/
 			->addTab('Kolumna #1', ['placement' => 'top'])
 			->addGroup('g_product', ['label' => ''])

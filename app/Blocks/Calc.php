@@ -18,7 +18,7 @@ class Calc extends Block
 	public $mode = 'edit';
 	public $supports = [
 		'align' => false,
-		'mode' => false,
+		'mode' => true,
 		'jsx' => true,
 		'multiple' => true,
 		'anchor' => true,
@@ -35,15 +35,6 @@ class Calc extends Block
 		$calc = new FieldsBuilder('calc');
 
 		$calc
-			->addText('block-title', [
-				'label' => 'Tytuł',
-				'required' => 0,
-			])
-			->addAccordion('accordion1', [
-				'label' => 'Kalkulator',
-				'open' => false,
-				'multi_expand' => true,
-			])
 			->addTab('Elementy', ['placement' => 'top'])
 			->addText('shortcode', [
 				'label' => 'Kod formularza',

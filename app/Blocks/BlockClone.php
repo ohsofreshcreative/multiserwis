@@ -16,7 +16,7 @@ class BlockClone extends Block
     public $mode = 'edit';
     public $supports = [
         'align' => false,
-        'mode' => false,
+        'mode' => true,
         'jsx' => true,
     ];
 
@@ -26,15 +26,6 @@ class BlockClone extends Block
 
         $blockClone
             ->setLocation('block', '==', 'acf/block-clone')
-            ->addText('block-title', [
-                'label' => 'Tytuł (opcjonalny)',
-                'required' => 0,
-            ])
-            ->addAccordion('accordion1', [
-                'label' => 'Blok Referencyjny',
-                'open' => true,
-                'multi_expand' => true,
-            ])
 			/*--- TAB #1 ---*/
 			->addTab('Treści', ['placement' => 'top'])
             ->addPostObject('source_page', [
@@ -84,7 +75,6 @@ class BlockClone extends Block
         return [
             'source_page_id' => get_field('source_page'),
             'block_name' => get_field('block_name'),
-            'block_title' => get_field('block-title'),
             'section_id' => get_field('section_id'),
             'section_class' => get_field('section_class'),
             'background' => get_field('background'),

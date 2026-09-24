@@ -16,7 +16,7 @@ class HeroOffer extends Block
 	public $mode = 'edit';
 	public $supports = [
 		'align' => false,
-		'mode' => false,
+		'mode' => true,
 		'jsx' => true,
 	];
 
@@ -26,15 +26,6 @@ class HeroOffer extends Block
 
 		$hero_offer
 			->setLocation('block', '==', 'acf/hero-offer') // ważne!
-			->addText('block-title', [
-				'label' => 'Tytuł',
-				'required' => 0,
-			])
-			->addAccordion('accordion1', [
-				'label' => 'Hero - Oferta',
-				'open' => false,
-				'multi_expand' => true,
-			])
 			->addTab('Treść', ['placement' => 'top'])
 			->addGroup('g_hero_offer', ['label' => 'Hero - Produkt'])
 			->addImage('image', [

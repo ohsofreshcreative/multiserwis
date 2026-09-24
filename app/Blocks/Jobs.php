@@ -16,7 +16,7 @@ class Jobs extends Block
     public $mode = 'edit';
     public $supports = [
         'align' => false,
-        'mode' => false,
+        'mode' => true,
         'jsx' => true,
         'anchor' => true,
         'customClassName' => true,
@@ -28,15 +28,6 @@ class Jobs extends Block
 
         $jobs
             ->setLocation('block', '==', 'acf/jobs')
-            ->addText('block-title', [
-                'label' => 'Tytuł',
-                'required' => 0,
-            ])
-            ->addAccordion('accordion1', [
-                'label' => 'Oferty pracy',
-                'open' => false,
-                'multi_expand' => true,
-            ])
             ->addTab('Elementy', ['placement' => 'top'])
             ->addGroup('g_jobs', ['label' => ''])
             ->addText('title', ['label' => 'Tytuł'])

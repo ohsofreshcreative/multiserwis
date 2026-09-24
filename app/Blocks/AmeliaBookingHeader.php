@@ -16,7 +16,7 @@ class AmeliaBookingHeader extends Block
     public $mode = 'edit';
     public $supports = [
         'align' => false,
-        'mode' => false,
+        'mode' => true,
         'jsx' => true,
         'anchor' => true,
     ];
@@ -28,15 +28,6 @@ class AmeliaBookingHeader extends Block
         $ameliaHeader
             ->setLocation('block', '==', 'acf/amelia-booking-header') // Ważne - dopasowane do sluga
 
-			->addText('block-title', [
-				'label' => 'Tytuł',
-				'required' => 0,
-			])
-			->addAccordion('accordion1', [
-				'label' => 'Amelia - Kalendarz',
-				'open' => false,
-				'multi_expand' => true,
-			])
             ->addTab('Zawartość', ['placement' => 'top'])
             ->addSelect('amelia_service', [
                 'label' => 'Wybierz usługę',

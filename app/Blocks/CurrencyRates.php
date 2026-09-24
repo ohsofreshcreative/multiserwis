@@ -16,7 +16,7 @@ class CurrencyRates extends Block
 	public $mode = 'edit';
 	public $supports = [
 		'align' => false,
-		'mode' => false,
+		'mode' => true,
 		'jsx' => true,
 	];
 
@@ -25,9 +25,6 @@ class CurrencyRates extends Block
 		$b = new FieldsBuilder('currency_rates');
 
 		$b->setLocation('block', '==', 'acf/currency-rates')
-			->addText('block-title', ['label' => 'Tytuł', 'required' => 0])
-
-			->addAccordion('a1', ['label' => 'Kursy walut', 'open' => false])
 			->addTab('Treść', ['placement' => 'top'])
 			->addGroup('g_rates', ['label' => 'Treść'])
 			->addText('title',    ['label' => 'Tytuł sekcji'])

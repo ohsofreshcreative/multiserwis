@@ -16,7 +16,7 @@ class Services extends Block
     public $mode = 'edit';
     public $supports = [
         'align' => false,
-        'mode' => false,
+        'mode' => true,
         'jsx' => true,
         'anchor' => true,
         'customClassName' => true,
@@ -28,15 +28,6 @@ class Services extends Block
 
         $services
             ->setLocation('block', '==', 'acf/services')
-            ->addText('block-title', [
-                'label' => 'Tytuł',
-                'required' => 0,
-            ])
-            ->addAccordion('accordion1', [
-                'label' => 'Usługi',
-                'open' => false,
-                'multi_expand' => true,
-            ])
             ->addTab('Główne', ['placement' => 'top'])
             ->addText('title', ['label' => 'Główny tytuł bloku'])
 

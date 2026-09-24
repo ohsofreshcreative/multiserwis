@@ -16,7 +16,7 @@ class Resources extends Block
 	public $mode = 'edit';
 	public $supports = [
 		'align' => false,
-		'mode' => false,
+		'mode' => true,
 		'jsx' => true,
 	];
 
@@ -27,15 +27,6 @@ class Resources extends Block
         $resources
             ->setLocation('block', '==', 'acf/resources')
 
-			->addText('block-title', [
-				'label' => 'Tytuł',
-				'required' => 0,
-			])
-			->addAccordion('accordion1', [
-				'label' => 'Baza wiedzy',
-				'open' => false,
-				'multi_expand' => true,
-			])
             ->addTab('Lewa kolumna')
             ->addGroup('col_1', ['label' => 'Ustawienia lewej kolumny'])
                 ->addText('title', ['label' => 'Tytuł kolumny'])

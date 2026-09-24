@@ -16,7 +16,7 @@ class Connect extends Block
 	public $mode = 'edit';
 	public $supports = [
 		'align' => false,
-		'mode' => false,
+		'mode' => true,
 		'jsx' => true,
 		'multiple' => true,
 		'anchor' => true,
@@ -33,15 +33,6 @@ class Connect extends Block
 		$bottomBlock = new FieldsBuilder('connect');
 
 		$bottomBlock
-			->addText('block-title', [
-				'label' => 'Tytuł',
-				'required' => 0,
-			])
-			->addAccordion('accordion1', [
-				'label' => 'Kontakt - Stopka',
-				'open' => false,
-				'multi_expand' => true,
-			])
 			->addTab('Elementy', ['placement' => 'top'])
 			->addMessage('Edycja', 'Pole edytujemy klikajac w menu panelu administratora "Kontakt - Stopka".')
 			

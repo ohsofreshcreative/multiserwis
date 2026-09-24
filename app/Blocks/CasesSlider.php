@@ -16,7 +16,7 @@ class CasesSlider extends Block
 	public $mode = 'edit';
 	public $supports = [
 		'align' => false,
-		'mode' => false,
+		'mode' => true,
 		'jsx' => true,
 		'multiple' => true,
 		'anchor' => true,
@@ -33,15 +33,6 @@ class CasesSlider extends Block
 		$casesSlider = new FieldsBuilder('cases_slider');
 
 		$casesSlider
-			->addText('block-title', [
-				'label' => 'Tytuł',
-				'required' => 0,
-			])
-			->addAccordion('accordion1', [
-				'label' => 'Realizacje - Slider',
-				'open' => false,
-				'multi_expand' => true,
-			])
 			->addTab('Elementy', ['placement' => 'top'])
 			->addText('title', [
 				'label' => 'Nagłówek',

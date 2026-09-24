@@ -16,7 +16,7 @@ class HomeAbout extends Block
 	public $mode = 'edit';
 	public $supports = [
 		'align' => false,
-		'mode' => false,
+		'mode' => true,
 		'jsx' => true,
 		'anchor' => true,
 		'customClassName' => true,
@@ -28,15 +28,6 @@ class HomeAbout extends Block
 
 		$home_about
 			->setLocation('block', '==', 'acf/home-about') // ważne!
-			->addText('block-title', [
-				'label' => 'Tytuł',
-				'required' => 0,
-			])
-			->addAccordion('accordion1', [
-				'label' => 'Strona główna - O nas',
-				'open' => false,
-				'multi_expand' => true,
-			])
 			/*--- GRUPA #1 ---*/
 			->addTab('Sekcja 1', ['placement' => 'top'])
 			->addGroup('about1', ['label' => ''])

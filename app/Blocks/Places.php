@@ -17,7 +17,7 @@ class Places extends Block
 	public $mode = 'edit';
 	public $supports = [
 		'align' => false,
-		'mode' => false,
+		'mode' => true,
 		'jsx' => true,
 		'anchor' => true,
 		'customClassName' => true,
@@ -29,15 +29,6 @@ class Places extends Block
 
     $places
         ->setLocation('block', '==', 'acf/places')
-        ->addText('block-title', [
-            'label' => 'Tytuł',
-            'required' => 0,
-        ])
-        ->addAccordion('accordion1', [
-            'label' => 'Lokalizacje',
-            'open' => false,
-            'multi_expand' => true,
-        ])
 
         /*--- TAB #1 ---*/
         ->addTab('Treści', ['placement' => 'top'])

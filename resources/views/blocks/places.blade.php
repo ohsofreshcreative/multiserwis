@@ -30,7 +30,7 @@
 				@foreach ($r_places as $item)
 				<div data-gsap-element="card" class="__card relative bg-secondary/5 radius p-10 pt-18 mt-10">
 					@if (!empty($item['image']['url']))
-					<img class="absolute w-26 -top-13" src="{{ $item['image']['url'] }}" alt="{{ $item['image']['alt'] ?? '' }}" />
+					<img class="absolute w-26 h-26 object-cover rounded-full -top-13" src="{{ $item['image']['url'] }}" alt="{{ $item['image']['alt'] ?? '' }}" />
 					@endif
 					<b>{{ $item['name'] ?? '' }}</b>
 					<p>{!! $item['txt'] ?? '' !!}</p>

@@ -16,7 +16,7 @@ class HeroHelp extends Block
 	public $mode = 'edit';
 	public $supports = [
 		'align' => false,
-		'mode' => false,
+		'mode' => true,
 		'jsx' => true,
 	];
 
@@ -26,15 +26,6 @@ class HeroHelp extends Block
 
 		$hero_help
 			->setLocation('block', '==', 'acf/hero-help') // ważne!
-			->addText('block-title', [
-				'label' => 'Tytuł',
-				'required' => 0,
-			])
-			->addAccordion('accordion1', [
-				'label' => 'Hero - Pomagamy w',
-				'open' => false,
-				'multi_expand' => true,
-			])
 			->addTab('Treść', ['placement' => 'top'])
 			->addGroup('g_hero_help', ['label' => 'Hero - Produkt'])
 			->addImage('image', [

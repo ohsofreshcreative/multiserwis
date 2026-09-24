@@ -16,7 +16,7 @@ class HeroBlog extends Block
 	public $mode = 'edit';
 	public $supports = [
 		'align' => false,
-		'mode' => false,
+		'mode' => true,
 		'jsx' => true,
 	];
 
@@ -26,15 +26,6 @@ class HeroBlog extends Block
 
 		$hero_blog
 			->setLocation('block', '==', 'acf/hero-blog') // ważne!
-			->addText('block-title', [
-				'label' => 'Tytuł',
-				'required' => 0,
-			])
-			->addAccordion('accordion1', [
-				'label' => 'Hero - Baza wiedzy',
-				'open' => false,
-				'multi_expand' => true,
-			])
 			->addTab('Treść', ['placement' => 'top'])
 			->addGroup('g_hero_blog', ['label' => 'Hero - Produkt'])
 			->addImage('image', [

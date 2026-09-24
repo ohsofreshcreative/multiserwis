@@ -63,3 +63,22 @@ add_filter('gettext', function ($translated, $text, $domain) {
 
     return $translated;
 }, 10, 3);
+
+/*--- CHANGE EDIT SECTION ---*/
+
+
+add_filter('gettext', function ($translated, $text, $domain) {
+    if (
+        is_admin() &&
+        $text === 'Open expanded editor'
+    ) {
+        return 'Edytuj sekcję';
+    }
+
+    return $translated;
+}, 10, 3);
+
+
+add_filter('acf/blocks/default_expanded_editor_button_text', function () {
+    return 'Edytuj sekcję';
+});

@@ -16,7 +16,7 @@ class CasesLoop extends Block
 	public $mode = 'edit';
 	public $supports = [
 		'align' => false,
-		'mode' => false,
+		'mode' => true,
 		'jsx' => true,
 		'multiple' => true,
 		'anchor' => true,
@@ -33,15 +33,6 @@ class CasesLoop extends Block
 		$casesLoop = new FieldsBuilder('cases_loop');
 
 		$casesLoop
-			->addText('block-title', [
-				'label' => 'Tytuł',
-				'required' => 0,
-			])
-			->addAccordion('accordion1', [
-				'label' => 'Lista realizacji',
-				'open' => false,
-				'multi_expand' => true,
-			])
 			->addTab('Elementy', ['placement' => 'top'])
 			->addMessage('Edycja', 'Realizacje dodajemy klikajac w menu panelu administratora pole "Realizacje".')
 			

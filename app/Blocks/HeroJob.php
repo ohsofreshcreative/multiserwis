@@ -16,7 +16,7 @@ class HeroJob extends Block
 	public $mode = 'edit';
 	public $supports = [
 		'align' => false,
-		'mode' => false,
+		'mode' => true,
 		'jsx' => true,
 	];
 
@@ -26,15 +26,6 @@ class HeroJob extends Block
 
 		$hero_job
 			->setLocation('block', '==', 'acf/hero-job') // ważne!
-			->addText('block-title', [
-				'label' => 'Tytuł',
-				'required' => 0,
-			])
-			->addAccordion('accordion1', [
-				'label' => 'Hero - Oferta pracy',
-				'open' => false,
-				'multi_expand' => true,
-			])
 			->addTab('Treść', ['placement' => 'top'])
 			->addGroup('g_herojob', ['label' => 'Hero - Pojedyncza oferta'])
 			->addImage('image', [

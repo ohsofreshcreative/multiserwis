@@ -16,7 +16,7 @@ class Categories extends Block
 	public $mode = 'edit';
 	public $supports = [
 		'align' => false,
-		'mode' => false,
+		'mode' => true,
 		'jsx' => true,
 		'anchor' => true,
 		'customClassName' => true,
@@ -28,15 +28,6 @@ class Categories extends Block
 
 		$categories
 			->setLocation('block', '==', 'acf/categories')
-			->addText('block-title', [
-				'label' => 'Tytuł',
-				'required' => 0,
-			])
-			->addAccordion('accordion1', [
-				'label' => 'Kategorie produktów',
-				'open' => false,
-				'multi_expand' => true,
-			])
 			->addTab('Elementy', ['placement' => 'top'])
 			->addGroup('g_categories', ['label' => ''])
 			->addText('title', ['label' => 'Tytuł'])

@@ -16,7 +16,7 @@ class Selection extends Block
     public $mode = 'edit';
     public $supports = [
         'align' => false,
-        'mode' => false,
+        'mode' => true,
         'jsx' => true,
     ];
 
@@ -26,15 +26,6 @@ class Selection extends Block
 
         $selection
 			->setLocation('block', '==', 'acf/selection') // ważne!
-			->addText('block-title', [
-				'label' => 'Tytuł',
-				'required' => 0,
-			])
-			->addAccordion('accordion1', [
-				'label' => 'Produkty z kategorii',
-				'open' => false,
-				'multi_expand' => true,
-			])
 			->addTab('Elementy', ['placement' => 'top'])
 			->addGroup('g_selection', ['label' => ''])
 			->addText('title', ['label' => 'Tytuł'])

@@ -17,7 +17,7 @@ class Wehelp extends Block
 	public $mode = 'edit';
 	public $supports = [
 		'align' => false,
-		'mode' => false,
+		'mode' => true,
 		'jsx' => true,
 	];
 
@@ -27,15 +27,6 @@ class Wehelp extends Block
 
 		$wehelp
 			->setLocation('block', '==', 'acf/wehelp') // ważne!
-			->addText('block-title', [
-				'label' => 'Tytuł',
-				'required' => 0,
-			])
-			->addAccordion('accordion1', [
-				'label' => 'Pomagamy w (lista)',
-				'open' => false,
-				'multi_expand' => true,
-			])
 			->addTab('Treść', ['placement' => 'top'])
 			->addGroup('g_wehelp', ['label' => 'Hero - Produkt'])
 			->addImage('image', [
